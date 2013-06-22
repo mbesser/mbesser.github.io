@@ -2,5 +2,7 @@
 
 $dark-red: #8E302D;
 $light-red: #CE4F4B;
+
 $dark-green: #4E9187;
 $light-green: #4E9187;
+$lighter-green : lighten($light-green, 20%);

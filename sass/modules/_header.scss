@@ -1,7 +1,7 @@
 // SITE HEADER STYLES
 
 .site-header {
-  padding: 4em 0;
+  padding: 2em 0 4em;
   background-color: $light-red;
 }
 
@@ -19,7 +19,7 @@
   display: table-cell;
   height: 135px;
   color: $dark-red;
-  font-size: 35px;
+  font-size: 2rem;
   font-style: italic;
   text-align: center;
   vertical-align: middle;

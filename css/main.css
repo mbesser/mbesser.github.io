@@ -8,7 +8,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #fffff2; }
+  background-color: #ce4f4b; }
 
 .cf:before, .site-header:before,
 .site-footer:before,
@@ -30,7 +30,7 @@ body {
   margin: 0 auto; }
 
 body {
-  color: #333;
+  color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.0000rem;
   font-weight: 300;
@@ -67,8 +67,28 @@ small, aside {
 .no-break {
   display: inline-block; }
 
+.button {
+  display: inline-block;
+  padding: .25rem 1.5rem;
+  background-color: #87beb6;
+  border-radius: .5rem;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s; }
+  .button:hover {
+    background-color: #4e9187;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s; }
+
 .site-header {
-  padding: 4em 0;
+  padding: 2em 0 4em;
   background-color: #ce4f4b; }
 
 .portrait-box {
@@ -82,7 +102,7 @@ small, aside {
   display: table-cell;
   height: 135px;
   color: #8e302d;
-  font-size: 35px;
+  font-size: 2rem;
   font-style: italic;
   text-align: center;
   vertical-align: middle; }
@@ -97,7 +117,10 @@ small, aside {
   .welcome {
     text-align: left; } }
 .post {
-  padding-left: 1.5em; }
+  padding-left: 1.5em;
+  border-bottom: 1px dashed #8e302d; }
+  .post:last-of-type {
+    border-bottom: none; }
 
 .post-title {
   position: relative; }

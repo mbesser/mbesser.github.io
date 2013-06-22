@@ -1,0 +1,17 @@
+// BUTTONS
+
+.button {
+  display: inline-block;
+  padding: .25rem 1.5rem;
+  background-color: $lighter-green;
+  border-radius: .5rem;
+  color: #fff;
+  text-decoration: none;
+  
+  @include transition(background-color);
+
+  &:hover {
+    background-color: $light-green;
+    @include transition(background-color);
+  }
+}
