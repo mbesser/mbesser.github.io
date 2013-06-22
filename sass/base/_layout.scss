@@ -1,26 +1,22 @@
 // LAYOUT
 
+// micro cleafix by Nicolas Gallagher
+
+.cf:before,
+.cf:after {
+  content: " ";
+}
+
+.cf:after {
+  clear: both;
+}
+
 .site-header,
 .site-footer,
 .main-content {
   max-width: 800px;
+  padding: 0 1em;
   margin: 3em auto;
-}
 
-.block-1,
-.block-2,
-.block-3 {
-  display: inline-block;
-}
-
-.block-1 {
-  max-width: 200px;
-}
-
-.block-2 {
-  max-width: 400px;
-}
-
-.block-3 {
-  max-width: 600px;
+  @extend .cf;
 }
