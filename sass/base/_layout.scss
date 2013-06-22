@@ -13,10 +13,13 @@
 
 .site-header,
 .site-footer,
-.main-content {
-  max-width: 800px;
-  padding: 0 1em;
-  margin: 3em auto;
+.main {
 
   @extend .cf;
+}
+
+.inner {
+  max-width: 800px;
+  padding: 0 1em;
+  margin: 0 auto;
 }
