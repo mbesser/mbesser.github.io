@@ -1,5 +1,10 @@
 // SITE HEADER STYLES
 
+.site-header {
+  padding: 4em 0;
+  background-color: $light-red;
+}
+
 .portrait-box {
   display: block;
   width: 135px;
@@ -10,23 +15,27 @@
   }
 }
 
-@media screen and (min-width: 480px) {
-  .portrait-box {
-    float: left;
-    margin: 0 1em 1em 0;
-  }
-}
-
 .welcome {
   display: table-cell;
   height: 135px;
   color: $dark-red;
   font-size: 35px;
   font-style: italic;
+  text-align: center;
   vertical-align: middle;
 
-  span {
-    display: inline-block;
+  .highlight {
     color: #fff;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .portrait-box {
+    float: left;
+    margin: 0 1em 1em 0;
+  }
+
+  .welcome {
+    text-align: left;
   }
 }

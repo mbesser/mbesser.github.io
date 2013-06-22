@@ -1,7 +1,7 @@
 // TYPOGRAPHY
 
 body {
-  color: #fff;
+  color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.0000rem;
   font-weight: 300;
@@ -39,4 +39,10 @@ p, ul {
 
 small, aside {
   font-size: 0.6250rem;
+}
+
+// prevent words and word groups from breaking
+
+.no-break {
+  display: inline-block;
 }
