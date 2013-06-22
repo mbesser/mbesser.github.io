@@ -1,0 +1,20 @@
+// SITE HEADER STYLES
+
+.portrait-box {
+  width: 135px;
+  text-align: left;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.welcome {
+  color: $dark-red;
+  font-weight: normal;
+  font-size: 35px;
+
+  span {
+    color: #fff;
+  }
+}

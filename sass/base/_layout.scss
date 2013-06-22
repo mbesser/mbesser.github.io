@@ -1,0 +1,26 @@
+// LAYOUT
+
+.site-header,
+.site-footer,
+.main-content {
+  max-width: 800px;
+  margin: 3em auto;
+}
+
+.block-1,
+.block-2,
+.block-3 {
+  display: inline-block;
+}
+
+.block-1 {
+  max-width: 200px;
+}
+
+.block-2 {
+  max-width: 400px;
+}
+
+.block-3 {
+  max-width: 600px;
+}

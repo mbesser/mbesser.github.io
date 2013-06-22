@@ -1,0 +1,24 @@
+// ----------------------------------------------------------------------------
+// HOME OF ALL THE STYLES
+// ----------------------------------------------------------------------------
+
+// Base styles
+// ------------------------------------
+// Contains the default settings, variables and mixins.
+
+@import "base/colors";
+@import "base/basics";
+@import "base/fontface";
+@import "base/layout";
+@import "base/typography";
+
+// Components
+// ------------------------------------
+// Common UI elements.
+
+
+// Modules
+// ------------------------------------
+// Larger building areas of the website.
+
+@import "modules/header";
