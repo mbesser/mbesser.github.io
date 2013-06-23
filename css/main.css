@@ -11,7 +11,7 @@ body {
   background-color: #324656; }
 
 a {
-  color: #4e9187;
+  color: #f1bb52;
   text-decoration: none; }
 
 .cf:before, .site-header:before,
@@ -49,6 +49,7 @@ h1 {
 
 h2 {
   font-size: 1.6250rem;
+  font-style: italic;
   font-weight: 300;
   line-height: 3.0000rem;
   margin-top: 1.5rem;
@@ -90,9 +91,9 @@ small, aside {
     transition: background-color 0.3s; }
 
 .btn-green {
-  background-color: #87beb6; }
+  background-color: #76d8b4; }
   .btn-green:hover {
-    background-color: #4e9187; }
+    background-color: #55af8e; }
 
 .site-header {
   padding: 2em 0 4em;
@@ -124,7 +125,7 @@ small, aside {
   .welcome {
     text-align: left; } }
 .post {
-  padding-left: 1.5em;
+  padding-left: 1.5rem;
   border-bottom: 1px dashed #c94f41; }
   .post:last-of-type {
     border-bottom: none; }
@@ -135,8 +136,8 @@ small, aside {
     position: absolute;
     display: block;
     top: 0;
-    left: -1.5em;
-    width: .5em;
+    left: -1.5rem;
+    width: .5rem;
     height: 100%;
-    background-color: #4e9187;
+    background-color: #55af8e;
     content: " "; }

@@ -1,7 +1,7 @@
 // STYLING POSTS
 
 .post {
-  padding-left: 1.5em;
+  padding-left: 1.5rem;
   border-bottom: 1px dashed $red;
 
   &:last-of-type {
@@ -16,10 +16,14 @@
     position: absolute;
     display: block;
     top: 0;
-    left: -1.5em;
-    width: .5em;
+    left: -1.5rem;
+    width: .5rem;
     height: 100%;
     background-color: $light-green;
     content: " ";
   }
+}
+
+.post-label {
+
 }
