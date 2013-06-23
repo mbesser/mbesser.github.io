@@ -14,12 +14,12 @@
 .site-header,
 .site-footer,
 .main {
-
+  padding-bottom: 1rem;
   @extend .cf;
 }
 
 .inner {
   max-width: 800px;
   padding: 0 1em;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
 }

@@ -28,10 +28,15 @@ a {
 .main:after {
   clear: both; }
 
+.site-header,
+.site-footer,
+.main {
+  padding-bottom: 1rem; }
+
 .inner {
   max-width: 800px;
   padding: 0 1em;
-  margin: 0 auto; }
+  margin: 0 auto 2em auto; }
 
 body {
   color: #fff;
