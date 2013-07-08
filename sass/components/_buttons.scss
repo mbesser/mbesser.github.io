@@ -21,3 +21,18 @@
     background-color: $light-green;
   }
 }
+
+.hire-me {
+  display: block;
+  width: 230px;
+  margin: 1.688rem auto -1.688rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .hire-me {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+  }
+}
