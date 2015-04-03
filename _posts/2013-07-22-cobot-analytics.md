@@ -3,6 +3,8 @@ layout: post
 title:  "Cobot – New Analytics"
 date:   2013-07-22, 10:00
 categories: portfolio
+client: Cobot
+client_url: http://cobot.me
 tags: [webdesign, development]
 ---
 
