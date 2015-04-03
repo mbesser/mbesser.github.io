@@ -12,7 +12,7 @@ The [Cobot](http://cobot.me) team wanted customers to stay informed about
 their coworking spaces' growth and business metrics. To achieve this customers
 should receive a weekly email providing them with a recap of current numbers and
 statistics. This email works as a complement to the previously implemented
-analytics section. It introduces
+[analytics section]({% post_url 2013-07-22-cobot-analytics %}). It introduces
 the analytics section to new customers and acts as an incentive to make a use of
 the metrics provided.
 
