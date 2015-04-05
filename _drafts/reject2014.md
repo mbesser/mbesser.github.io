@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Barkarte.at"
+title:  "Reject.JS"
 date:   2014-31-12, 10:00
 categories: portfolio
 client: Reject.JS
