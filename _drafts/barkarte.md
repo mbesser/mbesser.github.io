@@ -6,7 +6,7 @@ categories: portfolio
 client: Pernod Ricard Austria
 client_url: http://pernod-ricard-austria.com
 project_url: http://barkarte.at
-tags: [webdesign, development]
+tags: [webdesign, front-end development]
 ---
 
-test
+Barkarte.at is a tool that 
