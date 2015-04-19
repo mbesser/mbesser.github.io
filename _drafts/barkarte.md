@@ -9,4 +9,6 @@ project_url: http://barkarte.at
 tags: [webdesign, front-end development]
 ---
 
-Barkarte.at is a tool that 
+Barkarte.at is a tool that
+
+I handled the design process from early concepts to final implementation. Delivered user journey documentation, wireframes, mockup in several levels of fidelity, a front-end styleguide and much more.
