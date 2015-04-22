@@ -7,3 +7,6 @@ client: Reject.JS
 project_url: http://2014.rejectjs.org
 tags: [webdesign, development]
 ---
+
+All Reject.JS stuff goes here… A general description of what is
+going on, links to each year's website. Maybe screenshots?
