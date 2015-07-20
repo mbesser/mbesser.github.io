@@ -1,0 +1,25 @@
+<div id="work" class="module module--work skew">
+  <div class="module__body skew__content">
+    <h2>Recent Projects</h2>
+    {% for post in site.categories.portfolio limit:3 %}
+      <div class="grid grid--golden">
+        <header class="grid__item">
+          <h4 class="lead">
+            {{ post.lead }}
+          </h4>
+          <h3 class="title">
+            {{ post.title }}
+          </h3>
+          <p class="excerpt">
+            {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+          </p>
+        </header>
+        <article class="grid__item">
+          <div class="browser">
+            <img src="{{ site.baseurl }}/img/{{ post.image }}" alt="Screenshot: {{ post.title }}">
+          </div>
+        </article>
+      </div>
+    {% endfor %}
+  </div>
+</div>

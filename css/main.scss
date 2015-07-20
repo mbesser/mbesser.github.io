@@ -1,4 +1,9 @@
 ---
 ---
 
-@import "base"
+@import "globals/mixins";
+@import "globals/variables";
+@import "base";
+@import "layout";
+@import "navigation";
+@import "typography";

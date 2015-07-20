@@ -1,6 +1,8 @@
 ---
 layout: post
-title:  "Cobot – New Analytics"
+lead: Cobot
+title:  "New Analytics"
+image: cobot_analytics_01.jpg
 date:   2013-07-22, 10:00
 categories: portfolio
 client: Cobot

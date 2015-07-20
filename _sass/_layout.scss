@@ -1,0 +1,121 @@
+/**************************************
+  LAYOUT
+**************************************/
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site__content {
+  width: 100%;
+  flex: 1;
+}
+
+.module {
+  position: relative;
+
+  &:last-child,
+  &:last-of-type,
+  &:only-child {
+    border-bottom: none;
+  }
+}
+
+.module__header {
+  flex: 1;
+
+  @include respond-to(medium) {
+    padding: $space*2 0;
+  }
+}
+
+.module__body {
+  flex: 1;
+  padding: 0 $space;
+  margin: 0 auto;
+
+  @include respond-to(small) { max-width: 95%; }
+  @include respond-to(medium) { max-width: 55rem; }
+  @include respond-to(large) { max-width: 70rem; }
+
+  @include respond-to(small) {
+    flex: 0 0 68%;
+    padding: 0 $space*2;
+  }
+}
+
+.site__header {
+  padding-top: $space*2;
+  padding-bottom: $space*2;
+}
+
+.site__navigation {
+  display: inline-block;
+}
+
+// Mini Grid
+// ------------------------------------
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$space;
+  margin-right: -$space;
+}
+
+.grid--center {
+  justify-content: center;
+}
+
+.grid__item {
+  flex: 0 1 auto;
+  align-self: flex-start;
+  padding: $space*2 $space;
+}
+
+.grid--halves {
+  .grid__item {
+    @include respond-to(small) { flex-basis: 50%; }
+  }
+}
+
+.grid--thirds {
+  .grid__item {
+    @include respond-to(small) { flex-basis: 66.6667%; }
+    @include respond-to(medium) { flex-basis: 33.3333%; }
+  }
+}
+
+.grid--fourths {
+  .grid__item {
+    flex-basis: 50%;
+
+    @include respond-to(small) { flex-basis: 33%; }
+    @include respond-to(medium) { flex-basis: 25%; }
+  }
+}
+
+.grid--golden {
+  @include respond-to(medium) {
+  .grid__item {
+      flex-basis: 38.2%;
+
+      &:last-child {
+        flex-basis: 61.8%;
+      }
+    }
+  }
+}

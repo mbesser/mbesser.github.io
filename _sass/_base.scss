@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family:  sans-serif;
   font-weight: 300;
 }
 
@@ -8,8 +8,153 @@ body {
   padding: 0;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
+.owner {
+  display: inline-block;
+  color: $body-copy;
+  font-size: .88889rem;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.owner__name {
+  display: block;
   font-weight: 900;
 }
+
+.owner__occupation {
+  display: block;
+  font-size: .75rem;
+}
+
+// ------------------------------------
+// HERO MODULE
+// ------------------------------------
+.module--hero {
+  .module__body {
+    padding-top: 5rem;
+    padding-bottom: 15rem;
+    margin-bottom: -5rem;
+    background: url('/img/matti.png') no-repeat 50% 90%;
+    background-size: 60%;
+
+    @include respond-to(small) {
+      background: url('/img/matti.png') no-repeat 125% 85%;
+      background-size: 70%;
+    }
+
+    @include respond-to(medium) {
+      padding-bottom: 5rem;
+      background: url('/img/matti.png') no-repeat 140% 50%;
+      background-size: 60%;
+    }
+
+    @include respond-to(large) {
+      padding-bottom: 10rem;
+      background: url('/img/matti.png') no-repeat 130% 0%;
+      background-size: 60%;
+    }
+  }
+}
+
+.hero__title,
+.hero__greeting {
+  @include respond-to(small) {
+    margin-right: 50%;
+  }
+
+  @include respond-to(medium) {
+    margin-right: 33.3333%;
+  }
+}
+
+.hero__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $body-copy-dark;
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.1;
+
+  @include respond-to(small) { font-size: 3rem; };
+}
+
+.hero__greeting {
+  padding: $space*3 0;
+  margin-bottom: 0;
+  color: $body-copy;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.hero__link {
+  display: inline-block;
+  border-bottom: 2px solid $red;
+  color: $red;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color .2s ease-in-out, color .2s ease-in-out;
+
+  &:hover {
+    color: $red-light;
+    border-color: $red-light;
+    transition: border-color .2s ease-in-out, color .2s ease-in-out;
+  }
+}
+
+// alignment helpers with flex-box (defaults to centered)
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aligner__item {
+  flex: 1;
+}
+
+.aligner__item--left {
+  /* align-self: flex-start; */
+}
+
+
+.module--work {
+  @include skewY(-5);
+  background-color: #fff;
+}
+
+.browser {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem .25rem .25rem;
+  background-color: #e1e1e1;
+  border-radius: .25rem;
+
+  &:before {
+    position: absolute;
+    display: block;
+    content: '';
+    top: .5rem;
+    left: .5rem;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: #d1d1d1;
+    box-shadow: .75rem 0 0 #d1d1d1, 1.5rem 0 0 #d1d1d1;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+// Button

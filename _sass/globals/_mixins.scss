@@ -1,0 +1,153 @@
+// ------------------------------------
+// MIXINS
+// ------------------------------------
+
+// Clearfix
+// ------------------------------------
+// inspired by Nicolas Gallagher's micro clearfix
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// Manage responsive breakpoints
+// ------------------------------------
+
+$small: 767px;
+$medium: 992px;
+$large: 1200px;
+$huge: 1400px;
+
+// viewports with low height
+$shallow: 700px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (min-width: $small) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (min-width: $medium) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: $large) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "shallow" {
+    @media (max-height: $shallow) and (min-width: $medium) {
+      @content;
+    }
+  }
+}
+
+// Burger icon for navigation toggle
+// ------------------------------------
+// created by Joren Van Hee (https://github.com/jorenvanhee)
+
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+  $burger-height: $height !global;
+  $burger-gutter: $gutter !global;
+
+  position: relative;
+  margin-top: $height + $gutter;
+  margin-bottom: $height + $gutter;
+
+  &, &:before, &:after {
+    display: inline-block;
+    width: $width;
+    height: $height;
+    background-color: $color;
+    @if $border-radius != 0 {
+      border-radius: $border-radius;
+    }
+
+    transition-property: background-color, transform;
+    transition-duration: $transition-duration;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    content: "";
+  }
+
+  &:before { top: -($height + $gutter); }
+  &:after { top: $height + $gutter; }
+}
+
+// Select parts of the burger
+@mixin burger-parts {
+  &, &:before, &:after {
+    @content;
+  }
+}
+
+@mixin burger-top {
+  &:before {
+    @content;
+  }
+}
+
+@mixin burger-middle {
+  & {
+    @content;
+  }
+}
+
+@mixin burger-bottom {
+  &:after {
+    @content;
+  }
+}
+
+// Burger animations
+@mixin burger-to-cross {
+  & {
+    background-color: transparent;
+  }
+  &:before {
+    -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+  }
+  &:after {
+    -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+    transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+  }
+}
+
+// Skewing for content sections
+// ------------------------------------
+// The math here definitely needs some love. It works relatively well for small
+// values but gets increasingly inaccurate when values get higher.
+
+@mixin skewY($value) {
+
+  &.skew {
+    $factor: 360/400 * -1%;
+    $spacing: $value * $factor;
+
+    padding-top: $spacing;
+    padding-bottom: $spacing;
+    margin-top: $spacing * 2;
+    transform: skewY(#{$value}deg);
+    transform-origin: 0 0;
+
+    .skew__content {
+      transform: skewY(#{$value * -1}deg);
+    }
+  }
+}

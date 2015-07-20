@@ -1,6 +1,8 @@
 ---
 layout: post
-title:  "Cobot – The Weekly Status Email"
+lead: Cobot
+title:  "The Weekly Status Email"
+image: cobot_mail_01.jpg
 date:   2014-01-30, 10:00
 categories: portfolio
 client: Cobot

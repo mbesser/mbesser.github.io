@@ -1,0 +1,108 @@
+// ------------------------------------
+// NAVIGATION
+// ------------------------------------
+
+.site__navigation {
+  display: inline-block;
+  float: right;
+}
+
+.navigation-list {
+  display: none;
+
+  @include respond-to(medium) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 0;
+  }
+}
+
+.navigation-list__item {
+  display: block;
+  margin: 0;
+
+  a {
+    display: inline-block;
+    color: $body-copy-dark;
+    font-size: .88889rem;
+    font-weight: 900;
+    margin-left: $space;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      transition: all .2s ease-in-out;
+    }
+  }
+}
+
+.highlighted a {
+  color: $red;
+}
+
+// toggling nav visiblity
+.navigation__toggle {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+
+   @include respond-to(medium) { display: none; }
+}
+
+.navigation__toggle-button {
+  display: inline-block;
+  padding: $space 0;
+  margin-top: -$space;
+  float: right;
+  font-size: .88889rem;
+  font-weight: 900;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-transform: uppercase;
+
+  @include respond-to(small) { padding: $space; }
+  @include respond-to(medium) { display: none; }
+
+  .toggle-icon {
+    @include burger($space, 2px, 3px, $body-copy, 1px);
+  }
+}
+
+.navigation__toggle:checked {
+  ~ .navigation-list {
+    position: absolute;
+    display: block;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    padding: 2rem;
+    z-index: 1;
+    background-color: $gold;
+  }
+
+  ~ .navigation__toggle-button .toggle-icon {
+    @include burger-to-cross;
+  }
+}
+
+// ticket link — always visible
+// ------------------------------------
+
+.navigation-list--tickets {
+  display: block;
+  flex-shrink: 0;
+
+  @include respond-to(medium) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 0;
+  }
+
+  .navigation-list__item {
+    /* background-color: $lighter-pink; */
+  }
+}
