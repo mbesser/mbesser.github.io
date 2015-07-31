@@ -7,7 +7,7 @@ date:   2014-01-30, 10:00
 categories: portfolio
 client: Cobot
 client_url: http://cobot.me
-tags: development, email design
+tags: [development, email design]
 ---
 
 The [Cobot](http://cobot.me) team wanted customers to stay informed about

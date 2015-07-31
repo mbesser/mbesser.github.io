@@ -7,7 +7,7 @@ date:   2013-07-22, 10:00
 categories: portfolio
 client: Cobot
 client_url: http://cobot.me
-tags: design, development
+tags: design development
 ---
 
 [Cobot](http://cobot.me) is a webapp that frees coworking space managers from
