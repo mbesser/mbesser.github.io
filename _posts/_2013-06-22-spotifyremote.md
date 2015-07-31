@@ -3,7 +3,7 @@ layout: post
 title:  "Spotify-Remote – Control Spotify from your browser"
 date:   2013-06-22, 23:45
 categories:
-tags: [design, development, side project]
+tags: [design, development]
 ---
 
 Most remotes for spotify have to be controlled via native apps. Spotify-Remote is open source, platform agnostic and works with almost every modern browser.
