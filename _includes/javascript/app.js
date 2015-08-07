@@ -8,5 +8,7 @@ $(document).ready(function() {
   });
 
   // responsive headlines
-  $('.post__title').fitText();
+  $('.post__title').fitText(1.2, {
+    minFontSize: '36px',
+    maxFontSize: '112px' });
 });
