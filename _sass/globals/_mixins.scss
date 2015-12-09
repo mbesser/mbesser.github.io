@@ -142,7 +142,7 @@ $shallow: 700px;
 
     padding-top: $spacing;
     padding-bottom: $spacing;
-    margin-top: $spacing * 2;
+    margin-top: -$spacing;
     transform: skewY(#{$value}deg);
     transform-origin: 0 0;
 

@@ -1,7 +1,23 @@
 ---
 layout: default
 ---
-<h3>{{ page.title }}</h3>
-{{ page.date | date_to_string }}
+<div class="module">
+  <div class="module__body">
+    {% if page.image %}
+      <section class="post__break">
+        <div class="post__break-image" style="background-image: url(/img/{{ page.image }});"></div>
+      </section>
+    {% endif %}
+    <header class="post__header">
+      <h1 class="post__title">{{ page.title }}</h1>
+      <h2 class="post__excerpt">
+        {{ page.excerpt | remove: '<p>' | remove: '</p>' }}
+      </h2>
+    </header>
+    <article class="post__content">
 
-  {{ content }}
+      {% include /post/post_details.html %}
+      {{ content | remove: page.excerpt }}
+    </article>
+  </div>
+</div>

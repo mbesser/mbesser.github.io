@@ -35,8 +35,14 @@ body {
   .module__body {
     padding-top: 5rem;
     padding-bottom: 15rem;
-    margin-bottom: -5rem;
-    background: url('/img/matti.png') no-repeat 50% 90%;
+  }
+}
+
+.home {
+  background-color: $bright-gold;
+
+  .module__body {
+    background: url('/img/matti.png') no-repeat 50% 100%;
     background-size: 60%;
 
     @include respond-to(small) {
@@ -45,21 +51,19 @@ body {
     }
 
     @include respond-to(medium) {
-      padding-bottom: 5rem;
-      background: url('/img/matti.png') no-repeat 140% 50%;
+      background: url('/img/matti.png') no-repeat 140% 65%;
       background-size: 60%;
     }
 
     @include respond-to(large) {
-      padding-bottom: 10rem;
-      background: url('/img/matti.png') no-repeat 130% 0%;
+      background: url('/img/matti.png') no-repeat 130% 35%;
       background-size: 60%;
     }
   }
 }
 
-.hero__title,
-.hero__greeting {
+.home__title,
+.home__greeting {
   @include respond-to(small) {
     margin-right: 50%;
   }
@@ -69,7 +73,7 @@ body {
   }
 }
 
-.hero__title {
+.home__title {
   margin-top: 0;
   margin-bottom: 0;
   color: $body-copy-dark;
@@ -82,7 +86,8 @@ body {
   @include respond-to(small) { font-size: 3rem; };
 }
 
-.hero__greeting {
+.home__greeting {
+  max-width: 30rem;
   padding: $space*3 0;
   margin-bottom: 0;
   color: $body-copy;
@@ -92,7 +97,7 @@ body {
   line-height: 1.3;
 }
 
-.hero__link {
+.home__link {
   display: inline-block;
   border-bottom: 2px solid $red;
   color: $red;

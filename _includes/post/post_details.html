@@ -1,0 +1,24 @@
+<ul class="post__details">
+  {% if page.client.size > 0 %}
+    <li>
+      <h4>Client</h4>
+      <p>
+        <a href="{{ page.client_url }}">
+          {{ page.client }}
+        </a>
+      </p>
+    </li>
+  {% endif %}
+  {% if page.tags.size > 0 %}
+    <li>
+      <h4>My Role</h4>
+      <p>{{ page.tags | array_to_sentence_string }}</p>
+    </li>
+  {% endif %}
+  <li>
+    <h4>See it live</h4>
+    <p>
+      <a href="{{ page.project_url }}">{{ page.project_url | replace:'http://','' }}</a>
+    </p>
+  </li>
+</ul>

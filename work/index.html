@@ -2,6 +2,22 @@
 layout: default
 ---
 
-{% for post in site.categories.portfolio %}
-  {{ post.content }}
-{% endfor %}
+<div class="module">
+  <div class="module__header">
+    <h2>Some projects I've worked on</h2>
+  </div>
+  <div class="module__body">
+    <article class="grid grid--thirds">
+      {% for post in site.categories.portfolio %}
+        <a href="{{ post.url }}" class="grid__item">
+          {% if post.image %}
+            <div class="browser">
+              <img src="{{ site.baseurl }}/img/{{ post.image }}" alt="{{ post.lead }}: {{ post.title }}">
+            </div>
+          {% endif %}
+          <h3 class="title">{{ post.lead }}</h3>
+        </a>
+      {% endfor %}
+    </article>
+  </div>
+</div>
