@@ -10,4 +10,8 @@ highlighter: pygments
 
 # Build settings
 markdown: kramdown
+input: GFM
 permalink: none
+
+# Server settings
+port: 1337
