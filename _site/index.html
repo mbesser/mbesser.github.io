@@ -19,9 +19,9 @@
 
 <header class="site-header">
   <div class="inner">
-    <div class="portrait-box">
-      <img src="img/matti.png" alt="Matti Besser">
-    </div>
+    <a href="/" class="portrait-box">
+      <img src="/img/matti.png" alt="Matti Besser">
+    </a>
     <h1 class="welcome">
       Hi, my name is <span class="no-break highlight">Matti</span>. <span class="no-break">I am</span> a freelance <span class="no-break highlight">web designer</span> and <span class="no-break highlight">front-end developer</span>.
     </h1>
@@ -30,6 +30,7 @@
     </p>
   </div>
 </header>
+
 
 <div class="main">
   <div class="inner">
@@ -41,7 +42,7 @@
   </header>
   <p><a href="http://rejectjs.org">Reject.JS</a> is an annual, community-driven full day JavaScript conference happening in Berlin.</p>
 
-<p>Reject.JS was born in 2010 out of the monthly <a href="http://berlinjs.org">BerlinJS</a> meetups, and aims to give a chance to experience the JavaScript community to rejected speakers of JSConf.eu, people who didn’t get a ticket and everyone else who’s interested. Nowadays, Reject.JS is a full-blown conference itself, while still staying true to its roots.</p>
+<p>Reject.JS was born in 2010 out of the monthly <a href="http://berlinjs.org">Berlin.JS</a> meetups, and aims to give a chance to experience the JavaScript community to rejected speakers of JSConf.eu, people who didn’t get a ticket and everyone else who’s interested. Nowadays, Reject.JS is a full-blown conference itself, while still staying true to its roots.</p>
 
 <p>I am a team member since 2011. Since then I take care of the conference website design &amp; implementation. From the very beginning I decided to apply a responive webdesign approach and sticked to it.</p>
 
@@ -66,15 +67,16 @@
 their coworking spaces’ growth and business metrics. To achieve this customers
 should receive a weekly email providing them with a recap of current numbers and
 statistics. This email works as a complement to the previously implemented
-<a href="/portfolio/2013/07/22/cobot-analytics.html">analytics section</a>. It introduces
-the analytics section to new customers and acts as an incentive to make a use of
+<a href="/portfolio/2013/07/22/cobot-analytics.html">analytics section</a>. New customers
+get introduced to the analytics and get an incentive to make a use of
 the metrics provided.</p>
 
-<p>My role included the design and development of an responsive email template.
+<p>My role included the design and development of an responsive email template that
+works in all major mail clients on a variety of devices.
 In close collaboration I delivered everything from early sketches and wireframes
 to detailed mockups and production code. I’ve built the template upon the
-<a href="http://zurb.com/ink">Ink</a> email framework and used <a href="http://litmus.com">Litmus</a>
-for testing the same in various email clients.</p>
+<a href="http://zurb.com/ink">Ink</a> framework and used <a href="http://litmus.com">Litmus</a>
+for testing the mail in various clients.</p>
 
 <p>Cobot published a <a href="http://blog.cobot.me/post/80063402778/weekly-status-email">blogpost</a>
 announcing the new feature.</p>
@@ -92,9 +94,21 @@ announcing the new feature.</p>
   <header>
     <h2 class="post-title">Cobot – New Analytics</h2>
   </header>
-  <p><a href="http://cobot.me">Cobot</a> is a webapp that frees coworking space managers from mundane tasks, giving them the time to do what is important: attending to their coworkers. The new analytics section gives coworking space managers a detailed insight into what is going on in their space. The Cobot team wrote an elaborate <a href="http://blog.cobot.me/post/55591004529/whats-the-trend-friend">blogpost</a> about this new set of features.</p>
+  <p><a href="http://cobot.me">Cobot</a> is a webapp that frees coworking space managers from
+mundane tasks, giving them the time to do what is important: attending to their
+coworkers. The new analytics section provides coworking space managers with
+detailed insight into what is going on in their space.</p>
 
-<p>I designed charts, tables and the interface which contains them. Afterwards I created the mockups and a small prototype that shows how the new section will integrate with the main application. Finally, I implemented the design within a rails app which uses handlebars.js for templating. The charts were built with D3.js by <a href="https://twitter.com/langalex">Alex</a> from the Cobot team.</p>
+<p>I designed charts, tables and the interface which contains them. Afterwards I
+created the mockups and a small prototype that shows how the new section will
+integrate with the main application. Finally, I implemented the design within a
+rails app which uses handlebars.js for templating.
+<a href="https://twitter.com/langalex">Alex</a> from the Cobot team built the charts
+using D3.js.</p>
+
+<p>The Cobot team wrote an elaborate
+<a href="http://blog.cobot.me/post/55591004529/whats-the-trend-friend">blogpost</a> about
+this new set of features.</p>
 
   <!-- <footer class="post-footer">
     
@@ -167,6 +181,7 @@ announcing the new feature.</p>
 
 <footer class="site-footer">
   <div class="inner">
+    <a href="/impressum">Impressum & Disclaimer</a> | <a href="/datenschutz">Datenschutzerklärung</a>
   </div>
 </footer>
 
@@ -188,3 +203,4 @@ _gaq.push(['_trackPageview']);
 <!-- body lives in includes/htmlhead.html -->
 </body>
 </html>
+
