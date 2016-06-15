@@ -1,5 +1,5 @@
 <ul class="post__details">
-  {% if page.client.size > 0 %}
+  {% if page.client %}
     <li>
       <h4>Client</h4>
       <p>
@@ -9,7 +9,7 @@
       </p>
     </li>
   {% endif %}
-  {% if page.tags.size > 0 %}
+  {% if page.tags %}
     <li>
       <h4>My Role</h4>
       <p>{{ page.tags | array_to_sentence_string }}</p>
