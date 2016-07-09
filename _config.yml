@@ -1,17 +1,41 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
 # Site settings
 title: Matti Besser — Webdesign and Frontend Development
 email: hello@mattibesser.com
-description: Freelance web designer and front-end developer based in Berlin. Focusing on HTML and CSS I code what I design.
-baseurl: "" # the subpath of your site, e.g. /blog/
+description: > # this means to ignore newlines until "baseurl:"
+  Freelance web designer and front-end developer based in Berlin. Focussing on HTML and CSS.
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://mattibesser.com" # the base hostname & protocol for your site
 twitter_username: m_besser
 github_username:  mbesser
-highlighter: pygments
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Sass settings
+sass:
+  sass_dir: assets/sass
+  style: :compressed
 
 # Build settings
-markdown: kramdown
-input: GFM
-permalink: none
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - README.md
+  - CNAME
+  - node_modules
 
-# Server settings
-port: 1337
+# Plugin settings
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
