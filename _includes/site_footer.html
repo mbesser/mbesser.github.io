@@ -1,6 +1,17 @@
 <footer class="site__footer module">
   <article class="module__body">
-    Footer
+    <div class="grid grid--thirds">
+      <div class="grid__item">
+        &copy;{{ site.time | date: '%Y' }} {{ site.author }}
+      </div>
+      <div class="grid__item">
+        &nbsp;
+      </div>
+      <div class="grid__item">
+        <a href="/impressum/index.html">Impressum</a> | 
+        <a href="/datenschutz/index.html">Datenschutzerklärung</a>
+      </div>
+    </div>
   </article>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
