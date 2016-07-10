@@ -129,17 +129,21 @@
 }
 
 .post__break-image {
-  display: block;
-  position: relative;
-  padding-bottom: 50vh;
-  padding-left: 99999px;
-  margin-left: -99999px;
-  padding-right: 99999px;
-  margin-right: -99999px;
-  background-position: top center;
-  background-attachment: fixed;
-  background-size: cover;
-  will-change: transform;
+  display: none;
+
+  @include respond-to(medium) {
+    display: block;
+    position: relative;
+    padding-bottom: 50vh;
+    padding-left: 99999px;
+    margin-left: -99999px;
+    padding-right: 99999px;
+    margin-right: -99999px;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: cover;
+    will-change: transform;  
+  }
 }
 
 .post__break + .post__header {
