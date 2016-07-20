@@ -32,34 +32,58 @@ body {
 // HERO MODULE
 // ------------------------------------
 .module--hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 10rem);
+  margin-bottom: 10rem
+
+
   .module__body {
-    padding-top: 5rem;
-    padding-bottom: 15rem;
+    background-color: transparent;
   }
 }
 
 .home {
-  background-color: $bright-gold;
+  position: relative;
+  z-index: 1;
+  background-color: $brighter-gold;
+  // background: url('/img/matti.png') no-repeat 50% 100%;
+  // background-size: 60%;
 
-  .module__body {
-    background: url('/img/matti.png') no-repeat 50% 100%;
-    background-size: 60%;
-
-    @include respond-to(small) {
-      background: url('/img/matti.png') no-repeat 125% 85%;
-      background-size: 70%;
-    }
-
-    @include respond-to(medium) {
-      background: url('/img/matti.png') no-repeat 140% 65%;
-      background-size: 60%;
-    }
-
-    @include respond-to(large) {
-      background: url('/img/matti.png') no-repeat 130% 35%;
-      background-size: 60%;
-    }
+  &:after {
+    background: inherit;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: skewY(-4.5deg);
+    transform-origin: 100%;
+    z-index: -1;
   }
+
+  // @include respond-to(small) {
+  //   background: url('/img/matti.png') no-repeat 125% 85%;
+  //   background-size: 70%;
+  // }
+  //
+  // @include respond-to(medium) {
+  //   background: url('/img/matti.png') no-repeat 140% 65%;
+  //   background-size: 60%;
+  // }
+  //
+  // @include respond-to(large) {
+  //   background: url('/img/matti.png') no-repeat 130% 35%;
+  //   background-size: 60%;
+  // }
+  //
+  // @include respond-to(huge) {
+  //   background: url('/img/matti.png') no-repeat 110% 35%;
+  //   background-size: 40%;
+  // }
 }
 
 .home__title,
@@ -132,7 +156,7 @@ body {
 
 
 .module--work {
-  @include skewY(-5);
+  // @include skewY(-5);
   background-color: #fff;
 }
 

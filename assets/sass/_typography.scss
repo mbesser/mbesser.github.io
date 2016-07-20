@@ -5,9 +5,10 @@
 html, body {
   /* background-color: $bright-gold; */
   color: $body-copy;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
   font-size: 18px;
   font-weight: 300;
+  font-feature-settings: "liga" 1, "onum" 1;
   line-height: 1.375rem;
   transition: font-size .2s ease-in-out;
 
@@ -87,25 +88,25 @@ em {
 }
 
 strong {
-  font-weight: 400;
+  font-weight: 700;
 }
 
 small, aside {
   font-size: 0.6875rem;
 }
 
-.site__content a,
-.site__footer a {
+.site__content a:not([class]),
+.site__footer a:not([class]) {
   &:link,
   &:visited {
     color: $red;
-    /* border-bottom: 1px dotted transparent; */
+    border-bottom: 1px dotted currentColor;
     text-decoration: none;
   }
 
   &:active,
   &:hover {
-    /* border-bottom-color: $red; */
+    color: $red-light;
   }
 }
 

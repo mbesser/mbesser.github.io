@@ -7,7 +7,7 @@
 }
 
 .post__header {
-  padding: $space;
+  padding: $space 0;
   padding-bottom: 0;
 
   @include respond-to(medium) {
@@ -75,7 +75,7 @@
 }
 
 .post__content {
-  padding: $space;
+  padding: $space 0;
 
   @include respond-to(medium) {
     width: 61.8%;
@@ -142,7 +142,7 @@
     background-position: top center;
     background-attachment: fixed;
     background-size: cover;
-    will-change: transform;  
+    will-change: transform;
   }
 }
 

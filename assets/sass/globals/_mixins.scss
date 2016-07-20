@@ -48,6 +48,12 @@ $shallow: 700px;
     }
   }
 
+  @else if $breakpoint == "huge" {
+    @media (min-width: $huge) {
+      @content;
+    }
+  }
+
   @else if $breakpoint == "shallow" {
     @media (max-height: $shallow) and (min-width: $medium) {
       @content;
@@ -126,28 +132,5 @@ $shallow: 700px;
   &:after {
     -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
     transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
-  }
-}
-
-// Skewing for content sections
-// ------------------------------------
-// The math here definitely needs some love. It works relatively well for small
-// values but gets increasingly inaccurate when values get higher.
-
-@mixin skewY($value) {
-
-  &.skew {
-    $factor: 360/400 * -1%;
-    $spacing: $value * $factor;
-
-    padding-top: $spacing;
-    padding-bottom: $spacing;
-    margin-top: -$spacing;
-    transform: skewY(#{$value}deg);
-    transform-origin: 0 0;
-
-    .skew__content {
-      transform: skewY(#{$value * -1}deg);
-    }
   }
 }

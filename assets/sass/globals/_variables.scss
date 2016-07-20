@@ -14,6 +14,7 @@ $body-copy-dark: #152E3B;
 
 $gold: #F1BB52;
 $bright-gold: #FBD486;
+$brighter-gold: lighten($bright-gold, 10%);
 
 $red: #C94F41;
 $red-light: #FC6251;
