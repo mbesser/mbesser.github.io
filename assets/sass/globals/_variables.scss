@@ -1,0 +1,20 @@
+// ------------------------------------
+// VARIABLES
+// ------------------------------------
+
+// Units
+$space: 1rem;
+
+// Colors
+$body-bg: #f1f1f1;
+$body-copy: #324656;
+$body-copy-light: lighten($body-copy, 20%);
+$body-copy-lighter: lighten($body-copy-light, 20%);
+$body-copy-dark: #152E3B;
+
+$gold: #F1BB52;
+$bright-gold: #FBD486;
+$brighter-gold: lighten($bright-gold, 10%);
+
+$red: #C94F41;
+$red-light: #FC6251;

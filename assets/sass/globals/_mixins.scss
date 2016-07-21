@@ -1,0 +1,262 @@
+// ------------------------------------
+// MIXINS
+// ------------------------------------
+
+// Clearfix
+// ------------------------------------
+// inspired by Nicolas Gallagher's micro clearfix
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// Manage responsive breakpoints
+// ------------------------------------
+
+$small: 767px;
+$medium: 992px;
+$large: 1200px;
+$huge: 1400px;
+$ultra: 1600px;
+
+// viewports with low height
+$shallow: 700px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (min-width: $small) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (min-width: $medium) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: $large) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "huge" {
+    @media (min-width: $huge) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "ultra" {
+    @media (min-width: $ultra) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "shallow" {
+    @media (max-height: $shallow) and (min-width: $medium) {
+      @content;
+    }
+  }
+}
+
+// Burger icon for navigation toggle
+// ------------------------------------
+// created by Joren Van Hee (https://github.com/jorenvanhee)
+
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+  $burger-height: $height !global;
+  $burger-gutter: $gutter !global;
+
+  position: relative;
+  margin-top: $height + $gutter;
+  margin-bottom: $height + $gutter;
+
+  &, &:before, &:after {
+    display: inline-block;
+    width: $width;
+    height: $height;
+    background-color: $color;
+    @if $border-radius != 0 {
+      border-radius: $border-radius;
+    }
+
+    transition-property: background-color, transform;
+    transition-duration: $transition-duration;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    content: "";
+  }
+
+  &:before { top: -($height + $gutter); }
+  &:after { top: $height + $gutter; }
+}
+
+// Select parts of the burger
+@mixin burger-parts {
+  &, &:before, &:after {
+    @content;
+  }
+}
+
+@mixin burger-top {
+  &:before {
+    @content;
+  }
+}
+
+@mixin burger-middle {
+  & {
+    @content;
+  }
+}
+
+@mixin burger-bottom {
+  &:after {
+    @content;
+  }
+}
+
+// Burger animations
+@mixin burger-to-cross {
+  & {
+    background-color: transparent;
+  }
+  &:before {
+    -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+  }
+  &:after {
+    -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+    transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+  }
+}
+
+//-------------------------------------------------------------------------------------
+// Angled Edges v1.0.4 (https://github.com/josephfusco/angled-edges)
+// Copyright 2016 Joseph Fusco
+// Licensed under MIT (https://github.com/josephfusco/angled-edges/blob/master/LICENSE)
+//-------------------------------------------------------------------------------------
+
+/// Replace `$search` with `$replace` in `$string`
+///
+/// @author Hugo Giraudel
+/// @link   http://www.sassmeister.com/gist/1b4f2da5527830088e4d
+///
+/// @param  {String}  $string - Initial string
+/// @param  {String}  $search - Substring to replace
+/// @param  {String}  $replace ('') - New value
+/// @return {String}  Updated string
+///
+@function ae-str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + ae-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Encode SVG to use as background
+///
+/// @param  {String}  $string
+/// @return {String}  Encoded svg data
+///
+@function ae-svg-encode($string){
+  $result: ae-str-replace($string, '<svg', "<svg xmlns='http://www.w3.org/2000/svg'");
+  $result: ae-str-replace($result, '%', '%25');
+  $result: ae-str-replace($result, '"', '%22');
+  $result: ae-str-replace($result, "'", '%27');
+  $result: ae-str-replace($result, ' ', '%20');
+  $result: ae-str-replace($result, '<', '%3C');
+  $result: ae-str-replace($result, '>', '%3E');
+  @return 'data:image/svg+xml,' + $result;
+}
+
+/// Outputs pseudo content for main mixin
+///
+/// @author Joseph Fusco
+///
+/// @param  {String}  $location
+/// @param  {Number}  $height
+/// @output psuedo content
+///
+@mixin ae-pseudo($wedge, $height) {
+  background-image: url($wedge);
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: '';
+  height: $height * 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/// Attatches an svg wedge shape to an element
+///
+/// @author Joseph Fusco
+///
+/// @param  {String}  $location   - 'inside top', 'outside top', 'inside bottom', 'outside bottom'
+/// @param  {String}  $hypotenuse - 'upper left', 'upper right', 'lower left', 'lower right'
+/// @param  {Color}   $fill
+/// @param  {Number}  $width
+/// @param  {Number}  $height
+/// @output '::before' and/or "::after" with svg background image
+///
+@mixin angled-edge($location, $hypotenuse, $fill, $width: 2800, $height: 100) {
+
+  // polygon points for right triangle
+  $points: (
+  'upper left': '0,#{$height} #{$width},#{$height} #{$width},0',
+  'upper right': '0,#{$height} #{$width},#{$height} 0,0',
+  'lower left': '0,0 #{$width},#{$height} #{$width},0',
+  'lower right': '0,0 #{$width},0 0,#{$height}'
+  );
+
+  // ensure $fill color is using rgb()
+  $fill-rgb: 'rgb(' + round(red($fill)) + ',' + round(green($fill)) + ',' + round(blue($fill)) + ')';
+
+  // capture alpha component of $fill to use with fill-opacity
+  $fill-alpha: alpha($fill);
+
+  $wedge: ae-svg-encode('<svg height="#{$height}" width="#{$width}" fill="#{$fill-rgb}" fill-opacity="#{$fill-alpha}"><polygon points="#{map-get($points, $hypotenuse)}"></polygon></svg>');
+
+  position: relative;
+
+  @if ($location == 'inside top') {
+    &::before {
+      @include ae-pseudo($wedge, $height);
+      top: 0;
+    }
+  } @else if ($location == 'outside top') {
+    &::before {
+      @include ae-pseudo($wedge, $height);
+      top: -$height * 1px;
+    }
+  } @else if ($location == 'inside bottom') {
+    &::after {
+      @include ae-pseudo($wedge, $height);
+      bottom: 0;
+    }
+  } @else if ($location == 'outside bottom') {
+    &::after {
+      @include ae-pseudo($wedge, $height);
+      bottom: -$height * 1px;
+    }
+  } @else {
+    @error "Invalid argument for $location. Must use: 'inside top', 'outside top', 'inside bottom', 'outside bottom'";
+  }
+}
