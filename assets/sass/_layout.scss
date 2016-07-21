@@ -32,6 +32,8 @@ body {
 
 .module {
   position: relative;
+  padding-bottom: $space * 2;
+  z-index: 1;
 
   &:last-child,
   &:last-of-type,
@@ -55,6 +57,7 @@ body {
   padding: 0 $space;
   margin: 0 auto;
   background-color: #fff;
+  overflow: hidden;
 
   @include respond-to(small) { padding: 0 $space * 2; }
 }
