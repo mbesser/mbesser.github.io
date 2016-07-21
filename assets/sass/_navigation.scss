@@ -58,7 +58,6 @@
 .navigation__toggle-button {
   display: inline-block;
   padding: $space 0 $space;
-  // margin-top: -$space;
   float: right;
   font-size: .88889rem;
   font-weight: 900;
@@ -78,7 +77,7 @@
   ~ .navigation-list {
     position: absolute;
     display: block;
-    top: 4rem;
+    top: 3rem;
     left: 0;
     right: 0;
     bottom: 1rem;
@@ -87,7 +86,7 @@
     z-index: 1;
     background-color: transparentize($bright-gold, .1);
 
-    @include respond-to(medium) {
+    @include respond-to(small) {
       top: 5rem;
     }
   }
