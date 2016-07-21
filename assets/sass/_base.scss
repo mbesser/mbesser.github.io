@@ -25,7 +25,7 @@ body {
 
 .owner__occupation {
   display: block;
-  font-size: .75rem;
+  font-size: .65rem;
 }
 
 // ------------------------------------
@@ -41,6 +41,7 @@ body {
     padding-top: 5rem;
     padding-bottom: 10rem;
     background-color: transparent;
+    z-index: 2;
 
     @include respond-to(small) {
       padding-top: 10rem;
@@ -64,18 +65,6 @@ body {
   height: 100%;
   background: url('/img/matti.png') no-repeat 50% 100%;
   background-size: 60%;
-
-  &:before {
-    position: absolute;
-    display: block;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    content: '';
-    background-color: $brighter-gold;
-    z-index: -1;
-  }
 
 
   @include respond-to(small) {

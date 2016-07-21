@@ -118,6 +118,10 @@ small, aside {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 // lists with squares as bullets
 .list--squares li {
   position: relative;
@@ -169,4 +173,8 @@ small, aside {
 
 .excerpt {
   line-height: 1.5;
+}
+
+.content {
+  width: 50ch;
 }

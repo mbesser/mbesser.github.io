@@ -44,16 +44,16 @@
 .post__details {
 
   li {
-    display: inline-block;
+    // display: inline-block;
     padding-right: $space*2;
   }
 
-  @include respond-to(medium) {
-    width: 38.2%;
-    margin-left: -38.2%;
-    float: left;
-    text-align: right;
-  }
+  // @include respond-to(medium) {
+  //   width: 38.2%;
+  //   margin-left: -38.2%;
+  //   float: left;
+  //   text-align: right;
+  // }
 
   h4 {
     font-size: .618rem;

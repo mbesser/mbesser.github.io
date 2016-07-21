@@ -35,10 +35,12 @@ body {
   padding-bottom: $space * 2;
   z-index: 1;
 
-  &:last-child,
-  &:last-of-type,
-  &:only-child {
-    border-bottom: none;
+  &--border {
+    .module__body {
+      padding-top: $space * 2;
+      margin-top: $space * 2;
+      border-top: 4px double $brighter-gold;
+    }
   }
 }
 

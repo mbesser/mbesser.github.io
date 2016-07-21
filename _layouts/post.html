@@ -18,6 +18,19 @@ layout: default
 
       {% include /post/post_details.html %}
       {{ content | remove: page.excerpt }}
+
+      {% for tier in site.data.sponsors %}
+            <small class="text-muted">{{ tier.name }}</small>
+            <ul class="grid grid--{% cycle 'halves', 'thirds', 'thirds', 'fourths', 'fifths', 'fifths' %}">
+            {% for sponsor in tier.sponsors %}
+              <li class="grid__item">
+                <a href="{{ sponsor.url }}">
+                  <img src="/img/sponsors/{{ sponsor.name | downcase }}.png" alt="{{ sponsor.name }}">
+                </a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endfor %}
     </article>
   </div>
 </div>
