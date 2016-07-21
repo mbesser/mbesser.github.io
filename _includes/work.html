@@ -1,0 +1,29 @@
+<div id="work" class="module">
+  <div class="module__body">
+    <h2>Latest Works</h2>
+    {% for post in site.categories.portfolio limit:5 %}
+      <div class="grid grid--golden">
+        <header class="grid__item">
+          <h4 class="lead">
+            {{ post.lead }}
+          </h4>
+          <h3 class="title">
+            {{ post.title }}
+          </h3>
+          <p class="excerpt">
+            {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
+          </p>
+          <!-- <a class="home__link" href="{{ post.url }}" title="Details about the project {{ post.lead }}">
+            Read more
+          </a> -->
+          {% include post/post_details.html %}
+        </header>
+        <article class="grid__item">
+          <div class="browser">
+            <img src="{{ site.baseurl }}/img/{{ post.image }}" alt="Screenshot: {{ post.title }}">
+          </div>
+        </article>
+      </div>
+    {% endfor %}
+  </div>
+</div>

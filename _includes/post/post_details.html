@@ -1,0 +1,26 @@
+<ul class="post__details">
+  {% if post.client %}
+    <li>
+      <h4>Client</h4>
+      <p>
+        <a href="{{ post.client_url }}">
+          {{ post.client }}
+        </a>
+      </p>
+    </li>
+  {% endif %}
+  {% if post.tags %}
+    <li>
+      <h4>My Role</h4>
+      <p>{{ post.tags | array_to_sentence_string }}</p>
+    </li>
+  {% endif %}
+  {% if post.project_url %}
+    <li>
+      <h4>See it live</h4>
+      <p>
+        <a href="{{ post.project_url }}">{{ post.project_url | replace:'http://','' }}</a>
+      </p>
+    </li>
+  {% endif %}
+</ul>

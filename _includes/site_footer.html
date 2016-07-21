@@ -1,0 +1,18 @@
+<footer class="site__footer module">
+  <article class="module__body d-flex justify-separate">
+    <p>
+      &copy;{{ site.time | date: '%Y' }} {{ site.author }}
+    </p>
+  </div>
+    <p class="text-right">
+      <a href="/impressum/index.html">Impressum & Datenschutzerklärung</a>
+    </p>
+  </article>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+  {% include javascript/app.js %}
+  {% include javascript/fittext.js %}
+  {% include javascript/prefixfree.js %}
+  {% include javascript/analytics.js %}
+</script>

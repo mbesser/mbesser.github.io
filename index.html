@@ -1,19 +1,21 @@
 ---
-layout: default
-title: Portfolio
+layout: homepage
 ---
 
-<h3>Recent Work</h3>
-{% for post in site.categories.portfolio %}
-<article class="post">
-  <header>
-    <h2 class="post-title">{{ post.title }}</h2>
-  </header>
-  {{ post.content}}
-  <!-- <footer class="post-footer">
-    {% for tag in post.tags %}
-      <span class="button"><small>{{ tag }}</small></span>
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
     {% endfor %}
-  </footer> -->
-</article>
-{% endfor %}
+  </ul>
+
+</div>
