@@ -3,23 +3,22 @@
 **************************************/
 
 html, body {
-  /* background-color: $bright-gold; */
   color: $body-copy;
   font-family: 'Merriweather Sans', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   font-feature-settings: "liga" 1, "onum" 1;
-  line-height: 1.375rem;
+  line-height: 1.375;
   transition: font-size .2s ease-in-out;
 
-  @include respond-to(small) { line-height: 1.5rem; }
+  @include respond-to(small) { line-height: 1.5; }
   @include respond-to(medium) {
-    font-size: 20px;
-    line-height: 1.6875rem;
+    font-size: 18px;
+    line-height: 1.6875;
   }
   @include respond-to(large) {
-    font-size: 22px;
-    line-height: 1.875rem;
+    font-size: 20px;
+    line-height: 1.875;
   }
 }
 
