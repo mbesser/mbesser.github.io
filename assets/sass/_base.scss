@@ -136,6 +136,14 @@ body {
   }
 }
 
+.link--image {
+  opacity: .6;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 // alignment helpers with flex-box (defaults to centered)
 .aligner {
   display: flex;
