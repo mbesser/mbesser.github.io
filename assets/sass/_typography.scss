@@ -140,7 +140,11 @@ small, aside {
   content: " ";
 }
 
-
+.list--inline {
+  li {
+    display: inline-block;
+  }
+}
 
 .lead {
   display: inline-block;
@@ -176,4 +180,10 @@ small, aside {
 
 .content {
   max-width: 50ch;
+}
+
+.icon {
+  width: $space * 2;
+  margin: $space * 0.5;
+  fill: $body-copy;
 }
