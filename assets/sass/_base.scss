@@ -119,11 +119,10 @@ body {
   line-height: 1.3;
 }
 
-.home__link {
+.link--highlight {
   display: inline-block;
   border-bottom: 2px solid $red;
   color: $red;
-  font-size: .75rem;
   font-weight: 900;
   letter-spacing: 2px;
   text-decoration: none;
