@@ -28,6 +28,11 @@ body {
   width: 100%;
   flex: 1;
   background-color: #fff;
+
+  /* leave some space for the contact area and avoid overlap */
+  .site--default & {
+    padding-bottom: 10rem;
+  }
 }
 
 .module {
