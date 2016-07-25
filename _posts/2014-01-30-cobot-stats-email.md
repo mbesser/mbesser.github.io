@@ -1,13 +1,16 @@
 ---
+title: The Weekly Status Email
+date: 2014-01-30 10:00:00 Z
+categories:
+- portfolio
+tags:
+- Development
+- Email Design
 layout: post
 lead: Cobot
-title:  "The Weekly Status Email"
 image: cobot_mail_01.jpg
-date:   2014-01-30, 10:00
-categories: portfolio
 client: Cobot
 client_url: http://cobot.me
-tags: [Development, Email Design]
 ---
 
 The [Cobot](http://cobot.me) team wanted customers to stay informed about their coworking spaces' growth and business metrics.

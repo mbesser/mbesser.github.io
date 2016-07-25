@@ -1,8 +1,8 @@
 ---
+title: Filmabdruck – A Berlin based film maker
+date: 2013-06-22 23:25:00 Z
 layout: post
-title:  "Filmabdruck – A Berlin based film maker"
-date:   2013-06-22, 23:25
-categories:
+categories: 
 tags: Design Development
 ---
 

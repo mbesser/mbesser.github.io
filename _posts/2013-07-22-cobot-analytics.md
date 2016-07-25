@@ -1,13 +1,16 @@
 ---
+title: New Analytics
+date: 2013-07-22 10:00:00 Z
+categories:
+- portfolio
+tags:
+- Design
+- Development
 layout: post
 lead: Cobot
-title:  "New Analytics"
 image: cobot_analytics_01.jpg
-date:   2013-07-22, 10:00
-categories: portfolio
 client: Cobot
 client_url: http://cobot.me
-tags: Design Development
 ---
 
 The new analytics section provides coworking space managers with detailed insight into what is going on in their space.

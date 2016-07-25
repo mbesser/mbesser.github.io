@@ -1,8 +1,8 @@
 ---
+title: Spotify-Remote – Control Spotify from your browser
+date: 2013-06-22 23:45:00 Z
 layout: post
-title:  "Spotify-Remote – Control Spotify from your browser"
-date:   2013-06-22, 23:45
-categories:
+categories: 
 tags: Design Development
 ---
 
