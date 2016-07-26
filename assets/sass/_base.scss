@@ -75,12 +75,11 @@ body {
 
   @include respond-to(medium) {
     top: 10%;
-    background-size: 60%;
+    background-size: contain;
   }
 
   @include respond-to(ultra) {
     background-position: 80% 100%;
-    background-size: contain;
   }
 }
 
