@@ -1,6 +1,9 @@
 ---
 ---
 
+// currently disabled because styles are placed inline in includes/htmlhead via
+// includes/main.scss
+
 @import "globals/mixins";
 @import "globals/variables";
 @import "base";
