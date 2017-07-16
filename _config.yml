@@ -9,8 +9,10 @@ collections:
     title: Uploads
     output: true
 email: hello@mattibesser.com
-description: |
-  Freelance web designer and front-end developer based in Berlin. Focussing on HTML and CSS.
+description: 'Freelance web designer and front-end developer based in Berlin. Focussing
+  on HTML and CSS.
+
+'
 baseurl: ''
 url: http://mattibesser.com
 author: Matti Besser
