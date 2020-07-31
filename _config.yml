@@ -1,6 +1,6 @@
 ---
-title: Matti Besser — Web design and Front-end Development
-timezone: UTC
+title: Matti Besser — Product Design and Frontend Code
+timezone: UTC+1
 collections:
   posts:
     title: Posts
@@ -8,6 +8,9 @@ collections:
   uploads:
     title: Uploads
     output: true
+  case_studies:
+    output: true
+    permalink: /:collection/:name
 email: hello@mattibesser.com
 description: 'Freelance web designer and front-end developer based in Berlin. Focussing
   on HTML and CSS.
@@ -25,6 +28,8 @@ kramdown:
 sass:
   sass_dir: assets/sass
   style: :compressed
+include:
+  - _case_studies
 exclude:
 - Gemfile
 - Gemfile.lock
