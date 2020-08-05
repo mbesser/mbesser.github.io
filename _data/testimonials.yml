@@ -1,0 +1,28 @@
+- project: act 
+  quote: |
+    Zusammenarbeit und Kommunikation mit Matti sind sehr angenehm. Er füllt nicht nur seine Rolle als Designer hervorragend aus, sondern bringt sich auch gut in unseren Entwicklungsprozess ein. Die Tatsache, dass er sein Design weitestgehend selbst in die App implementieren kann und gut strukturierten Code schreibt, entlastet uns Entwickler erheblich.
+  person_name: Andreas Hellwig
+  person_role: Project Lead Developer
+  person_company: myclimate
+- project: medi
+  quote: |
+    Während der Zusammenarbeit mit Matti schätzte ich besonders seine Begabung, Kritik auf eine wertschätzende und konstruktive Weise zu äußern und dabei den Ideenreichtum seiner Kollegen eher anzuregen als zu limitieren.
+    Er erfasst eine Thematik ganzheitlich und stößt schnell zum Kern der Problematik vor. Seine Lösungen sind daher immer durchdacht und mit Liebe zum Detail umgesetzt. Er ist absolut verlässlich und aufrichtig und wurde von seinem Team immer sehr geschätzt — fachlich wie auch persönlich.
+  person_name: Kim Budelmann
+  person_image: kim_budelmann.jpg
+  person_image_alt: A black and white portrait of Kim Budelmann.
+  person_url: https://www.linkedin.com/in/kim-budelmann-408481158/
+  person_role: Product Manager
+  person_company: Temedica
+- project: SolarAbo
+  quote: |
+    Matti hat ein sehr gutes Gespür für unser Kundenbedürfnis bewiesen. Im konstruktiven Austausch mit uns entwickelte er kreative Lösungen, die uns halfen, SolarAbo als leicht verständliches und erfolgreiches Produkt zu etablieren. Er war ein zuverlässiger Partner auf dessen Unterstützung wir zählen konnten. Insbesondere auch, wenn es mal schnell gehen musste. Unsere Zusammenarbeit war sehr angenehm und geprägt von Matti’s lösungsorientierter und pragmatischer Herangehensweise.
+  person_name: Lars Konersmann
+  person_role: Head of Solar & Member of the Board
+  person_company: Energie Zukunft Schweiz AG
+- project: pumpind
+  quote: |
+    Das von Matti entwickelte, intuitiv nutzbare Design der Pumpind-Webapplikation ermöglicht Personen, die einen Umwälzpumpentausch zur Förderung anmelden wollen, schnell und angenehm ans Ziel zu gelangen. Dank der klar strukturierten Inhalte auf der Website sind KundInnen über die wichtigen Eckpunkte des Programmes informiert, ohne davon überfordert zu sein. Die Anmeldung des Fördervorhabens mittels der Applikation ist dann ein Leichtes. Die Zusammenarbeit mit Matti war stets angenehm. Er hat unsere Bedürfnisse und nicht zuletzt die unserer Kunden erkannt, mit großer Bereitschaft aufgenommen und die Anforderungen in schönes, leicht benutzbares Design übersetzt.
+  person_name: Nico Pfäffli
+  person_role: Project Manager
+  person_company: Energie Zukunft Schweiz AG

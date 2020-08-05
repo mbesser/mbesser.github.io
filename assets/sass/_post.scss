@@ -236,3 +236,78 @@ figure {
     }
   }
 }
+
+// Testimonials
+.testimonial {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  * + & {
+    margin-top: $space;
+  }
+
+  @include respond-to(medium) {
+  }
+
+  &__quote {
+    position: relative;
+    padding: $space * 2;
+    border: 1px solid $body-copy-lighter;
+    border-radius: ($space * 0.25);
+    z-index: 1;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: $space * 1;
+      width: $space * 3;
+      height: $space * 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODMiIGhlaWdodD0iOTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTY2LjczIDE2Yy04LjM4IDAtMTUuMjM4IDYuODU3LTE1LjIzOCAxNC45ODQgMCA0LjgyNSAyLjAzMiA4Ljg4OSA2LjA5NSAxMS45MzdMNDcuNjgyIDgwaDEzLjk2OWwxNi41MDgtMzUuMDQ4YzMuMDQ3LTYuODU3IDQuMDYzLTEwLjE1OCA0LjA2My0xMy45NjhDODIuMjIyIDIyLjg1NyA3NS4zNjUgMTYgNjYuNzMgMTZ6bS00My42ODIgMEMxNC42NjcgMTYgNy44MSAyMi44NTcgNy44MSAzMC45ODRjMCA0LjgyNSAyLjAzMSA4Ljg4OSA2LjA5NSAxMS45MzdMNCA4MGgxMy45NjhsMTYuNTA4LTM1LjA0OGMzLjA0OC02Ljg1NyA0LjA2NC0xMC4xNTggNC4wNjQtMTMuOTY4QzM4LjU0IDIyLjg1NyAzMS42ODMgMTYgMjMuMDQ4IDE2eiIgZmlsbD0iIzk0QURDMSIvPjwvc3ZnPg==");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 50%;
+      border-radius: 50%;
+      color: $body-copy-lighter;
+      content: '';
+      z-index: 2;
+    }
+
+    &::before {
+      left: $space * -1.5;
+    }
+
+    &::after {
+      right: $space * -1.5;
+      transform: scale3d(-1,-1,1);
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    margin-top: $space * -0.25;
+    margin-right: $space;
+    margin-left: $space;
+    padding: $space;
+    background-color: transparentize($body-copy-lighter, 0.9);
+    border-radius: ($space * 0.25);
+    border-color: $body-copy-lighter;
+    border-style: solid;
+    border-width: ($space * 0.25) 0 0 0;
+    font-size: 0.75rem;
+  }
+
+  &__image {
+    width: $space * 3;
+    height: $space * 3;
+    margin-right: $space * 0.5;
+    background-color: transparentize($body-copy-lighter, 0.9);
+    border-radius: 50%;
+  }
+}
