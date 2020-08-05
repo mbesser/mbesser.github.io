@@ -1,18 +1,18 @@
 <ul class="post__details">
-  {% if post.client %}
+  {% if post.key_facts.client %}
     <li>
       <h4>Client</h4>
       <p>
         <a href="{{ post.client_url }}">
-          {{ post.client }}
+          {{ post.key_facts.client.name }}
         </a>
       </p>
     </li>
   {% endif %}
-  {% if post.tags %}
+  {% if post.key_facts.roles %}
     <li>
       <h4>My Role</h4>
-      <p>{{ post.tags | array_to_sentence_string }}</p>
+      <p>{{ post.key_facts.roles | array_to_sentence_string }}</p>
     </li>
   {% endif %}
   {% if post.project_url %}

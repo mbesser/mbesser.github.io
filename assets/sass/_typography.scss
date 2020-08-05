@@ -45,11 +45,7 @@ h3 {
   line-height: 2.3750rem;
   margin-top: 1.688rem;
   margin-bottom: 1rem;
-  font-weight: 900;
-
-  &:first-child {
-    margin-top: 0;
-  }
+  font-weight: 400;
 }
 
 h4 {
@@ -69,7 +65,12 @@ h4 {
 
 p, ul, ol {
   margin-top: 0rem;
-  margin-bottom: 1.688rem;
+
+  & + p,
+  & + ul,
+  & + ol {
+    margin-top: $space;
+  }
 }
 
 ul {
@@ -176,10 +177,6 @@ small, aside {
 
 .excerpt {
   line-height: 1.5;
-}
-
-.content {
-  max-width: 50ch;
 }
 
 .icon {

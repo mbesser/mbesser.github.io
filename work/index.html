@@ -8,14 +8,10 @@ layout: default
   </div>
   <div class="module__body">
     <article class="grid grid--thirds">
-      {% for post in site.categories.portfolio %}
-        <a href="{{ post.url }}" class="grid__item">
-          {% if post.image %}
-            <div class="browser">
-              <img src="{{ site.baseurl }}/img/{{ post.image }}" alt="{{ post.lead }}: {{ post.title }}">
-            </div>
-          {% endif %}
-          <h3 class="title">{{ post.lead }}</h3>
+      {% for case_study in site.case_studies %}
+        <a href="{{ case_study.url }}" class="grid__item">
+          <h3>{{ case_study.title }}</h3>
+          <p>{{ case_study.description }}</p>
         </a>
       {% endfor %}
     </article>
