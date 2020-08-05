@@ -21,6 +21,7 @@
 // Manage responsive breakpoints
 // ------------------------------------
 
+$tiny: 492px;
 $small: 767px;
 $medium: 992px;
 $large: 1200px;
@@ -31,6 +32,12 @@ $ultra: 1600px;
 $shallow: 700px;
 
 @mixin respond-to($breakpoint) {
+  @if $breakpoint == "tiny" {
+    @media (min-width: $tiny) {
+      @content;
+    }
+  }
+
   @if $breakpoint == "small" {
     @media (min-width: $small) {
       @content;

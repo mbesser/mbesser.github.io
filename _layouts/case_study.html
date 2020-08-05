@@ -1,0 +1,51 @@
+---
+layout: default
+---
+{% if page.image %}
+  <section class="post__break">
+    <div class="post__break-image" style="background-image: url(/img/{{ page.image }});"></div>
+  </section>
+{% endif %}
+<article class="post__content">
+  <header class="post__header">
+    <h1 class="post__title">{{ page.title }}</h1>
+    <p class="post__excerpt">{{ page.description }}</p>
+  </header>
+  {% if page.roles %}
+    <section>
+      <p>{{ page.roles.intro }}</p>
+      <ul>
+        {% for role in page.roles.role %}
+          <li>
+            <h4>{{ role.name }}</h4>
+            <p>{{ role.text }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if page.sections %}
+    {% for section in page.sections %}
+      <section class="post__section">
+        <h2>{{ section.title }}</h2>
+
+        {% for content in section.contents %}
+          <div class="content">
+            <h3>{{ content.heading }}</h3>
+            {{ content.text | markdownify | smartify }}
+          </div>
+          {% if content.image_url %}
+            <figure>
+              <div class="image">
+                <img src="{{ site.baseurl }}/img/{{ page.title }}/{{ content.image_url }}" alt="{{ content.image_alt | markdownify | smartify }}">
+              </div>
+              <figcaption>{{ content.image_caption | markdownify | smartify }}</figcaption>
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </section>
+    {% endfor %}
+  {% endif %}
+
+</article>

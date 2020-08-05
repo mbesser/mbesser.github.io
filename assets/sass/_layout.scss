@@ -27,7 +27,14 @@ body {
 .site__content {
   width: 100%;
   flex: 1;
+  padding-right: $space;
+  padding-left: $space;
   background-color: #fff;
+
+  @include respond-to(small) {
+    padding-right: $space * 2;
+    padding-left: $space * 2;
+  }
 
   /* leave some space for the contact area and avoid overlap */
   .site--default & {
