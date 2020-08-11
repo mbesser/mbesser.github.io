@@ -1,13 +1,21 @@
 - project: act 
-  quote: |
+  quote_de: |
     Zusammenarbeit und Kommunikation mit Matti sind sehr angenehm. Er füllt nicht nur seine Rolle als Designer hervorragend aus, sondern bringt sich auch gut in unseren Entwicklungsprozess ein. Die Tatsache, dass er sein Design weitestgehend selbst in die App implementieren kann und gut strukturierten Code schreibt, entlastet uns Entwickler erheblich.
   person_name: Andreas Hellwig
-  person_role: Project Lead Developer
+  person_role: Lead Developer
   person_company: myclimate
+- project: act 
+  quote_de: |
+    Die act Webapplikation ist seit 2014 produktiv im Einsatz und begleitet Unternehmen dabei, Energie und Emissionen zu sparen. Rund 150 User nutzen die Webapplikation regelmässig, um Zielvereinbarungen abzuschliessen und Effizienzmassnahmen umzusetzen. Matti Besser hat unser Projekt zu Beginn während zwei Jahren in den Bereichen Usability und Design unterstützt. Er war massgeblich dafür verantwortlich, einen komplexen Sachverhalt für den User verständlich und intuitiv in einer Webapplikation abzubilden und somit das Endprodukt entscheidend verbessern. Die Zusammenarbeit mit Matti Besser war sowohl fachlich als auch menschlich in jeder Hinsicht sehr angenehm und wertvoll. Wir können ihn als Spezialisten im Bereich Usability und Design jederzeit weiterempfehlen.
+  person_name: Lea Fleischli
+  person_role: Project Lead
+  person_company: act Cleantech Agentur Schweiz
 - project: medi
-  quote: |
+  quote_de: |
     Während der Zusammenarbeit mit Matti schätzte ich besonders seine Begabung, Kritik auf eine wertschätzende und konstruktive Weise zu äußern und dabei den Ideenreichtum seiner Kollegen eher anzuregen als zu limitieren.
     Er erfasst eine Thematik ganzheitlich und stößt schnell zum Kern der Problematik vor. Seine Lösungen sind daher immer durchdacht und mit Liebe zum Detail umgesetzt. Er ist absolut verlässlich und aufrichtig und wurde von seinem Team immer sehr geschätzt — fachlich wie auch persönlich.
+  quote_en: |
+    While working with Matti, I particularly appreciated his ability to express criticism in an appreciative and constructive way, stimulating rather than limiting the creativity of his colleagues. He takes a holistic approach to a topic and quickly gets to the heart of the issue. His solutions are therefore always well thought out and implemented with attention to detail. He is absolutely reliable and sincere and has always been highly appreciated by his team — both professionally and personally. 
   person_name: Kim Budelmann
   person_image: kim_budelmann.jpg
   person_image_alt: A black and white portrait of Kim Budelmann.
@@ -15,13 +23,13 @@
   person_role: Product Manager
   person_company: Temedica
 - project: SolarAbo
-  quote: |
+  quote_de: |
     Matti hat ein sehr gutes Gespür für unser Kundenbedürfnis bewiesen. Im konstruktiven Austausch mit uns entwickelte er kreative Lösungen, die uns halfen, SolarAbo als leicht verständliches und erfolgreiches Produkt zu etablieren. Er war ein zuverlässiger Partner auf dessen Unterstützung wir zählen konnten. Insbesondere auch, wenn es mal schnell gehen musste. Unsere Zusammenarbeit war sehr angenehm und geprägt von Matti’s lösungsorientierter und pragmatischer Herangehensweise.
   person_name: Lars Konersmann
   person_role: Head of Solar & Member of the Board
   person_company: Energie Zukunft Schweiz AG
 - project: pumpind
-  quote: |
+  quote_de: |
     Das von Matti entwickelte, intuitiv nutzbare Design der Pumpind-Webapplikation ermöglicht Personen, die einen Umwälzpumpentausch zur Förderung anmelden wollen, schnell und angenehm ans Ziel zu gelangen. Dank der klar strukturierten Inhalte auf der Website sind KundInnen über die wichtigen Eckpunkte des Programmes informiert, ohne davon überfordert zu sein. Die Anmeldung des Fördervorhabens mittels der Applikation ist dann ein Leichtes. Die Zusammenarbeit mit Matti war stets angenehm. Er hat unsere Bedürfnisse und nicht zuletzt die unserer Kunden erkannt, mit großer Bereitschaft aufgenommen und die Anforderungen in schönes, leicht benutzbares Design übersetzt.
   person_name: Nico Pfäffli
   person_role: Project Manager
