@@ -1,6 +1,6 @@
 ---
 layout: case_study
-name: pelvina
+project_name: pelvina
 title: pelvina
 description: pelvina is the first certified digital prevention course for the pelvic floor in germany. In a smartphone app, users learn how the pelvic floor is structured and with which exercises it can be perceived and strengthened.
 title_image:
@@ -8,8 +8,8 @@ title_image:
   alt: Description of the image goes here.
 key_facts:
   - name: client
-    value: Temedica
-    logo_url: logo.jpg
+    value: Temedica GmbH
+    logo_url: logo_temedica.svg
   - name: Type of Product
     value: Mobile App
   - name: Duration
@@ -31,7 +31,7 @@ roles:
     - name: Frontend Developer
       text: To be able to implement the design efficiently I developed a CSS architecture based on modular components and utility classes. This way I was able to implement the design quickly and consistently in a living style guide and later transfer it directly into the live product.
 sections:
-  - title: Information Architecture &User Flows
+  - title: Information Architecture & User Flows
     contents:
       - heading: Combined Site and Content Map
         text: |
@@ -104,7 +104,7 @@ sections:
         image_caption: For the course modules we have introduced various illustrations that represent the respective topic.
       - heading: Design Lead
         text: |
-          I took over the project management and coordination with the product manager. Julia Körner, visual designer as well as I was her contact person with briefings, direction and continuous feedback.
+          I took over the project management and coordination with the product manager. Julia Körner, visual designer and illustrator, supported us in this project. I was her primary contact person and supported her as a with briefings, direction and continuous feedback.
         image_url: pelvina_redesign_paulina.png
         image_alt: Three device mockups that present how the redesigned course looked like.
         image_caption: |
@@ -163,7 +163,7 @@ sections:
         text: |
           In addition to the core product "Digital Prevention Course", we wanted to create an offering that attracts new audiences and increases retention for existing users beyond the original course.
 
-          I conducted a competitor anaylsis and market research of similar products to find how they approach subscriptions. In my early concept I show how a user flow could look like when pelvina would offer a subscription alongside its course content. I point out possible challenges and potentials regarding to user experience. The concept served as a basis for discussion and further decisions.
+          I conducted a competitor anaylsis and market research of similar products to find how they approach subscriptions. I put my insights into the context of pelvina and shaped an early concept that shows how a user flow could look like when pelvina would offer a subscription alongside its course content. I point out possible challenges and potentials regarding to user experience. The concept served as a basis for discussion and further decisions.
         image_url: pelvina_subscriptions_concept.png
         image_alt: A large flow chart diagram that shows how users would be guided through pelvina if it had the course and a subscription.
         image_caption: |
