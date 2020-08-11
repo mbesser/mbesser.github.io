@@ -56,7 +56,11 @@ layout: default
       {% for quote in testimonial %}
           <blockquote class="testimonial">
             <p class="testimonial__quote">
-              {{ quote.quote | smartify }}
+              {% if quote.quote_en %}
+                {{ quote.quote_en | smartify }}
+              {% else %}
+                {{ quote.quote_de | smartify }}
+              {% endif %}
             </p>
             <div class="testimonial__author">
               {% if quote.person_image %}
