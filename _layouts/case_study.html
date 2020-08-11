@@ -9,16 +9,16 @@ layout: default
 <article class="post__content">
   <header class="post__header">
     <h1 class="post__title">{{ page.title }}</h1>
-    <p class="post__excerpt">{{ page.description }}</p>
+    <p class="post__excerpt">{{ page.description | markdownify | smartify }}</p>
   </header>
   {% if page.roles %}
     <section>
-      <p>{{ page.roles.intro }}</p>
+      <p>{{ page.roles.intro | markdownify | smartify }}</p>
       <ul>
         {% for role in page.roles.role %}
           <li>
-            <h4>{{ role.name }}</h4>
-            <p>{{ role.text }}</p>
+            <h4>{{ role.name | markdownify | smartify }}</h4>
+            <p>{{ role.text | markdownify | smartify }}</p>
           </li>
         {% endfor %}
       </ul>
@@ -32,13 +32,17 @@ layout: default
 
         {% for content in section.contents %}
           <div class="content">
-            <h3>{{ content.heading }}</h3>
-            {{ content.text | markdownify | smartify }}
+            {% if content.heading %}
+              <h3>{{ content.heading }}</h3>
+            {% endif %}
+            {% if content.heading %}
+              {{ content.text | markdownify | smartify }}
+            {% endif %}
           </div>
           {% if content.image_url %}
             <figure>
               <div class="image">
-                <img src="{{ site.baseurl }}/img/{{ page.title }}/{{ content.image_url }}" alt="{{ content.image_alt | markdownify | smartify }}">
+                <img src="{{ site.baseurl }}/img/{{ page.project_name }}/{{ content.image_url }}" alt="{{ content.image_alt | markdownify | smartify }}">
               </div>
               <figcaption>{{ content.image_caption | markdownify | smartify }}</figcaption>
             </figure>
