@@ -25,14 +25,16 @@ layout: default
         <h2>{{ section.title }}</h2>
 
         {% for content in section.contents %}
-          <div class="content">
-            {% if content.heading %}
-              <h3>{{ content.heading }}</h3>
-            {% endif %}
-            {% if content.text %}
-              {{ content.text | markdownify | smartify }}
-            {% endif %}
-          </div>
+          {% if content.heading or content.text %}
+            <div class="content">
+              {% if content.heading %}
+                <h3>{{ content.heading }}</h3>
+              {% endif %}
+              {% if content.text %}
+                {{ content.text | markdownify | smartify }}
+              {% endif %}
+            </div>
+          {% endif %}
           {% if content.image_url %}
             <figure>
               <div class="image">
