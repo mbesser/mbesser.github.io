@@ -27,13 +27,13 @@ body {
 .site__content {
   width: 100%;
   flex: 1;
-  padding-right: $space;
-  padding-left: $space;
+  // padding-right: $space;
+  // padding-left: $space;
   background-color: #fff;
 
   @include respond-to(small) {
-    padding-right: $space * 2;
-    padding-left: $space * 2;
+    // padding-right: $space * 2;
+    // padding-left: $space * 2;
   }
 
   /* leave some space for the contact area and avoid overlap */
@@ -68,7 +68,7 @@ body {
   flex: 1;
   width: 100%;
   max-width: 70rem;
-  padding: 0 $space;
+  // padding: 0 $space;
   margin: 0 auto;
   background-color: #fff;
   overflow: hidden;

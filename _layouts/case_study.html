@@ -1,28 +1,22 @@
 ---
 layout: default
 ---
-{% if page.image %}
-  <section class="post__break">
-    <div class="post__break-image" style="background-image: url(/img/{{ page.image }});"></div>
-  </section>
-{% endif %}
-<article class="post__content">
-  <header class="post__header">
-    <h1 class="post__title">{{ page.title }}</h1>
-    <p class="post__excerpt">{{ page.description | markdownify | smartify }}</p>
+<article class="post">
+  <header>
+    <div class="text">
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description | markdownify | smartify }}</p>
+      {% if page.key_facts %}
+        {% include case_studies/key_facts.html %}
+      {% endif %}
+    </div>
+    <div class="image">
+      <img src="{{ site.baseurl }}/img/{{ page.project_name }}/{{ page.title_image.url }}" alt="{{ page.title_image.alt }}">
+    </div>
   </header>
+
   {% if page.roles %}
-    <section>
-      <p>{{ page.roles.intro | markdownify | smartify }}</p>
-      <ul>
-        {% for role in page.roles.role %}
-          <li>
-            <h4>{{ role.name | markdownify | smartify }}</h4>
-            <p>{{ role.text | markdownify | smartify }}</p>
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
+    {% include case_studies/roles.html %}
   {% endif %}
 
   {% if page.sections %}
@@ -35,7 +29,7 @@ layout: default
             {% if content.heading %}
               <h3>{{ content.heading }}</h3>
             {% endif %}
-            {% if content.heading %}
+            {% if content.text %}
               {{ content.text | markdownify | smartify }}
             {% endif %}
           </div>
@@ -48,8 +42,10 @@ layout: default
             </figure>
           {% endif %}
         {% endfor %}
+
       </section>
     {% endfor %}
+
   {% endif %}
   
   {% assign testimonial = site.data.testimonials | where: "project", page.project_name %}
