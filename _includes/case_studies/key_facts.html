@@ -1,0 +1,13 @@
+<div class="facts">
+  {% for fact in page.key_facts %}
+    <p class="fact">
+      <span class="fact__name">{{ fact.key }}</span>
+      <br>
+      {% if fact.logo_url %}
+        <img src="{{ site.baseurl }}/img/clients/{{ fact.logo_url }}" alt="{{ fact.value }}">
+      {% else %}
+        <span class="fact__value">{{ fact.value }}</span>
+      {% endif %}
+    </p>
+  {% endfor %}
+</div>

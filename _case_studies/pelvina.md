@@ -4,22 +4,22 @@ project_name: pelvina
 title: pelvina
 description: pelvina is the first certified digital prevention course for the pelvic floor in germany. In a smartphone app, users learn how the pelvic floor is structured and with which exercises it can be perceived and strengthened.
 title_image:
-  url: title_image.jpg
-  alt: Description of the image goes here.
+  url: pelvina_cover_image.png
+  alt: A screenshot from the pelvina app displayed in an iPhone. It shows the list of course modules which at the moment presents the first module. Overlaying the smartphone there is the app icon of plevina which shows an exercising female figure, Paulina.
 key_facts:
-  - name: client
+  - key: Client
     value: Temedica GmbH
     logo_url: logo_temedica.svg
-  - name: Type of Product
-    value: Mobile App
-  - name: Duration
-    value: 3 Years
-  - name: Team size
+  - key: Team size
     value: 3-8
-  - name: My Roles
-    value: UX/UI Designer, Lead Designer, Frontend Developer
+  - key: Time on project
+    value: 3 Years
+  - key: App store rating
+    value: 4.6
+  - key: Downloads
+    value: 30.000+
 roles:
-  intro: In the three years I worked on pelvina, I was involved as UX/UI designer, design lead and frontend developer.
+  # intro: In the three years I worked on pelvina, I was involved as UX/UI designer, design lead and frontend developer.
   role:
     - name: UX/UI Designer
       text: Initially, I supported the creation of the course concept in close cooperation with a product developer. My initial focus was on the information architecture for the course content, the development of user flows, a first style guide and interface design for the app.

@@ -1,0 +1,14 @@
+<section class="post__section">
+  <h2>My Roles</h2>
+  {% if page.roles.intro %}
+    <p>{{ page.roles.intro | markdownify | smartify }}</p>
+  {% endif %}
+  <div class="roles">
+    {% for role in page.roles.role %}
+      <div class="role">
+        <h4>{{ role.name | markdownify | smartify }}</h4>
+        <p>{{ role.text | markdownify | smartify }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
