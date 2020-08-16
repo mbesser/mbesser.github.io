@@ -22,10 +22,15 @@
   person_url: https://www.linkedin.com/in/kim-budelmann-408481158/
   person_role: Product Manager
   person_company: Temedica
-- project: SolarAbo
+- project: solarabo
   quote_de: |
     Matti hat ein sehr gutes Gespür für unser Kundenbedürfnis bewiesen. Im konstruktiven Austausch mit uns entwickelte er kreative Lösungen, die uns halfen, SolarAbo als leicht verständliches und erfolgreiches Produkt zu etablieren. Er war ein zuverlässiger Partner auf dessen Unterstützung wir zählen konnten. Insbesondere auch, wenn es mal schnell gehen musste. Unsere Zusammenarbeit war sehr angenehm und geprägt von Matti’s lösungsorientierter und pragmatischer Herangehensweise.
+  quote_en: |
+    Matti has shown a very good understanding for our customers' needs. In a constructive exchange with us, he developed creative solutions that helped us to establish SolarAbo as an easily understandable and successful product. He was a reliable partner whose support we could count on. Especially when things had to move fast. Our cooperation was very pleasant and characterized by Matti's solution-oriented and pragmatic approach.
   person_name: Lars Konersmann
+  person_image: lars_konersmann.jpg
+  person_image_alt: A black and white portrait of Lars lars_konersmann.jpg
+  person_url: https://www.linkedin.com/in/lars-konersmann-2017/
   person_role: Head of Solar & Member of the Board
   person_company: Energie Zukunft Schweiz AG
 - project: pumpind
