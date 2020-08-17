@@ -35,13 +35,17 @@ layout: default
               {% endif %}
             </div>
           {% endif %}
-          {% if content.image_url %}
-            <figure>
-              <div class="image">
-                <img src="{{ site.baseurl }}/img/{{ page.project_name }}/{{ content.image_url }}" alt="{{ content.image_alt | markdownify | smartify }}">
-              </div>
-              <figcaption>{{ content.image_caption | markdownify | smartify }}</figcaption>
-            </figure>
+          {% if content.images %}
+            <div class="images">
+              {% for image in content.images %}
+                <figure>
+                  <div class="image">
+                    <img src="{{ site.baseurl }}/img/{{ page.project_name }}/{{ image.image_url }}" alt="{{ image.image_alt }}">
+                  </div>
+                  <figcaption>{{ image.image_caption | markdownify | smartify }}</figcaption>
+                </figure>
+              {% endfor %}
+            </div>
           {% endif %}
         {% endfor %}
 
