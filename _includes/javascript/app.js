@@ -6,9 +6,4 @@ $(document).ready(function() {
       $('.navigation__toggle').removeAttr("checked");
     }
   });
-
-  // responsive headlines
-  $('.post__title').fitText(1.2, {
-    minFontSize: '36px',
-    maxFontSize: '112px' });
-});
+})
