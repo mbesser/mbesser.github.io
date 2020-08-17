@@ -1,10 +1,12 @@
-<nav class="site__navigation" role="navigation">
-  <input class="navigation__toggle" type="checkbox" id="toggler">
-  <label class="navigation__toggle-button" for="toggler">
-    <span class="toggle-icon"></span>
+<nav class="site__navigation" >
+  <input class="navigation__toggle vh" type="checkbox" role="button" aria-haspopup="true" id="toggle">
+  <label class="navigation__toggle-button" for="toggle">
+    <span class="toggle-icon" aria-hidden="true"></span>
     Menu
+    <span class="vh expanded-text">expanded</span>
+    <span class="vh collapsed-text">collapsed</span>
   </label>
-  <ul class="navigation-list">
+  <ul class="navigation-list" role="menu">
     <li class="navigation-list__item">
       <a class="navigation__link" href="/#services" title="Read about services I offer">Services</a>
     </li>
