@@ -8,14 +8,15 @@ html, body {
   font-size: 16px;
   font-weight: 300;
   font-feature-settings: "liga" 1, "onum" 1;
-  line-height: 1.375;
+  line-height: 1.5;
   transition: font-size .2s ease-in-out;
 
-  @include respond-to(small) { line-height: 1.5; }
+  @include respond-to(small) { line-height: 1.6875; }
   @include respond-to(medium) {
     font-size: 18px;
-    line-height: 1.6875;
+    line-height: 1.75;
   }
+
   @include respond-to(large) {
     font-size: 20px;
     line-height: 1.875;

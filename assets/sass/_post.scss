@@ -4,31 +4,90 @@
 
 .post {
   header {
+    margin-right: $space * -1;
+    margin-left: $space * -1;
     display: grid;
     column-gap: $space;
-    grid-template-areas: "text"  "image";
-    @include respond-to(medium) {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-areas: "text  text  image";
-    }
-    margin: 0 ($space * -1);
+    grid-template-areas: "text"
+                         "image";
     background-color: $mb-yellow-light;
+
+    @include respond-to(small) {
+      padding-left: $space * 2;
+    }
+
+    @include respond-to(medium) {
+      margin-right: $space * - 2;
+      margin-left: $space * - 2;
+      grid-template-columns: 0.5fr minmax(45ch, 2fr) 1fr;
+      grid-template-areas: ". text image";
+    }
 
     .text {
       grid-area: text;
-      padding-top: ($space * 6);
+      padding-right: $space * 2;
+      padding-left: $space * 2;
+      margin-top: $space * 6;
+      margin-bottom: $space * 2;
+      display: flex;
+      flex-direction: column;
+
+      @include respond-to(small) {
+        padding-right: 0;
+        padding-left: 0;
+      }
 
       p {
-        max-width: 45ch;
+        max-width: 40ch;
       }
     }
 
     .image {
+      padding-top: $space * 2;
       grid-area: image;
-      padding-top: ($space * 6);
+      display: flex;
+
+      &.align-right {
+        padding-bottom: $space * 2;
+        align-items: center;
+        justify-content: end;
+
+        img {
+          @include respond-to(medium) {
+            transform: scale(150%);
+            transform-origin: right;
+          }
+  
+          @include respond-to(huge) {
+            transform: scale(125%);
+            transform-origin: right;
+          }
+        }
+      }
+
+      &.align-bottom {
+        padding-top: $space * 2;
+        padding-right: $space * 2;
+        align-items: flex-end;
+        justify-content: center;
+
+        img {
+          @include respond-to(medium) {
+            transform: scale(125%) translateX(-25%);
+            transform-origin: bottom;
+          }
+          @include respond-to(large) {
+            transform: scale(100%) translateX(-50%);
+            transform-origin: bottom;
+          }
+        }
+      }
 
       img {
-        max-width: 100%;
+        max-height: 65vh;
+        max-width: 75vw;
+        width: 100%;
+        object-fit: scale-down;
       }
     }
   }
@@ -49,9 +108,9 @@
   margin-right: $space * 2;
   margin-left: $space * 2;
 
-  @include respond-to(small) {
+  @include respond-to(tiny) {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr minmax(35ch, 65ch) 1fr;
     column-gap: $space;
   }
 
@@ -63,14 +122,14 @@
     margin-bottom: $space * 4;
   }
 
-  h2,
-  h3 {
-    margin-top: 0;
-  }
+  // h2,
+  // h3 {
+  //   margin-top: 0;
+  // }
 }
 
 .content {
-  grid-column: 2 / span 2;
+  grid-column: 2;
 
   * + & {
     margin-top: $space;
@@ -78,15 +137,17 @@
 }
 
 h2 {
-  grid-column: 2 / span 2;
+  grid-column: 2;
 }
 
 .images {
-  grid-column: 2 / span 2;
+  grid-column: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45ch, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
   column-gap: $space * 2;
   row-gap: $space * 2;
+  margin-right: $space * -1;
+  margin-left: $space * -1;
 
   * + & {
     margin-top: $space;
@@ -216,24 +277,39 @@ h2 {
 
 // KEY FACTS
 .facts {
+  margin-top: $space * 2.5;
   display: grid;
-  grid-area: text;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  column-gap: $space;
+  grid-area: facts;
+  grid-template-columns: repeat(auto-fit, minmax(10ch, max-content));
+  grid-auto-rows: auto;
+  gap: $space;
 }
 
 .fact {
+  &:first-child {
+    grid-column: 1 / -1;
+  }
+
   &__name {
-    font-size: 0.75rem;
+    display: block;
+    font-size: 0.6875rem;
     letter-spacing: 2%;
     text-transform: uppercase;
   }
 
   &__value {
-    font-size: 2rem;
+    font-size: 1.25rem;
+    white-space: nowrap;
   }
 
   img {
-    height: $space * 1.6875;
+    max-height: $space * 4;
+    margin-top: $space * 0.5;
+    filter: opacity(0.75);
   }
+}
+
+small {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
