@@ -82,6 +82,7 @@
       padding: 2rem;
       z-index: 1;
       background-color: transparentize($bright-gold, .1);
+      backdrop-filter: blur(10px);
 
       @include respond-to(small) {
         top: 5rem;

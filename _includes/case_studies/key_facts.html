@@ -2,7 +2,6 @@
   {% for fact in page.key_facts %}
     <p class="fact">
       <span class="fact__name">{{ fact.key }}</span>
-      <br>
       {% if fact.logo_url %}
         <img src="{{ site.baseurl }}/img/clients/{{ fact.logo_url }}" alt="{{ fact.value }}">
       {% else %}
@@ -11,3 +10,12 @@
     </p>
   {% endfor %}
 </div>
+<!-- {% assign comments = page.key_facts | where: "comment", > 0 %}
+{% assign comments_count = comments | size %}
+{% if comments_count > 0 %}
+  <aside>
+    {% for comment in comments %}
+      <p>{{ comment.comment }}</p>
+    {% endfor %}
+  </aside>
+{% endif %} -->
