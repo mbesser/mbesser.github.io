@@ -28,15 +28,10 @@ body {
 
 .site__content {
   width: 100%;
+  padding-top: $space * 4;
+  padding-bottom: $space * 6;
   flex: 1;
-  // padding-right: $space;
-  // padding-left: $space;
   background-color: #fff;
-
-  @include respond-to(small) {
-    // padding-right: $space * 2;
-    // padding-left: $space * 2;
-  }
 
   /* leave some space for the contact area and avoid overlap */
   .site--default & {
@@ -70,16 +65,16 @@ body {
   flex: 1;
   width: 100%;
   max-width: 70rem;
-  // padding: 0 $space;
+  padding: 0 ($space * 2);
   margin: 0 auto;
   background-color: #fff;
   overflow: hidden;
 
-  @include respond-to(small) { padding: 0 $space * 2; }
+  @include respond-to(small) { padding: 0 ($space * 4); }
 }
 
 .site__header {
-  padding: 0 $space;
+  padding: 0 ($space * 2);
   margin: 0 -1rem;
   background-color: #fff;
 
@@ -172,6 +167,81 @@ body {
 
       &:last-child {
         flex-basis: 61.8%;
+      }
+    }
+  }
+}
+
+// Grid Grid for Work
+.work-grid {
+  // display: flex;
+
+  // @include respond-to(tiny) {
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fill, minmax(45ch, 1fr));
+  //   gap: $space * 2;
+  // }
+}
+
+.work-grid-item {
+  position: relative;
+  padding: $space * 2;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  background-color: $mb-yellow-light;
+  border-radius: .25rem;
+
+  @include respond-to(medium) {
+    flex-direction: row;
+  }
+
+  & + & {
+    margin-top: $space * 2;
+
+    @include respond-to(medium) {
+      margin-top: $space * 3;
+    }
+  }
+
+  a {
+    display: inline-block;
+    margin-top: $space * 2;
+    flex: none;
+  }
+
+  .text {
+    @include respond-to(medium) {
+      margin-right: 15rem;
+    }
+  }
+
+  img {
+    max-height: 50vh;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: scale-down;
+    transform: translate(0, 2rem);
+
+    &.align-right {
+      border-top-right-radius: $space * 0.25;
+      transform: translate(2rem, 2rem);
+    }
+
+    @include respond-to(medium) {
+      position: absolute;
+      max-width: 15rem;
+      right: 2rem;
+      bottom: 0;
+      max-height: 110%;
+
+      &.align-bottom {
+        transform: translate(0);
+      }
+
+      &.align-right {
+        transform: translate(2rem,-1rem) scale(120%);
+        transform-origin: bottom right;
       }
     }
   }

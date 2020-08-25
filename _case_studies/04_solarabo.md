@@ -2,7 +2,7 @@
 layout: case_study
 project_name: solarabo
 title: SolarAbo
-description: SolarAbo is an offering by Energie Zukunft Schweiz that enables swiss energy suppliers to offer solar power systems to home owners as either lease option or direct purchase. On a white-label platform which hosts an online calculator, interested parties can request offers for both rental and purchase options.
+description: SolarAbo enables swiss energy suppliers to offer solar power systems to home owners as either lease option or direct purchase. On a white-label platform which hosts an online calculator, interested parties can request offers for both rental and purchase options.
 title_image:
   url: solarabo_cover_image.png
   alt: A screenshot from the SolarAbo homepage displayed in a Macbook. It shows an image of a couple that stands closely together in front of their home which has solar panels applied to the roof. Text on the image present the marketing claims, main benefits and the call to action for the offering.

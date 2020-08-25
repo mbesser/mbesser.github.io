@@ -4,7 +4,7 @@
 
 html, body {
   color: $body-copy;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
   font-weight: 300;
   font-feature-settings: "liga" 1, "onum" 1;
@@ -36,7 +36,7 @@ h2 {
   margin-top: 3.375rem;
   margin-bottom: 1.688rem;
   font-weight: 300;
-  font-family: 'Merriweather';
+  font-family: 'Fira Sans', sans-serif;
   font-style: italic;
   color: $body-copy-light;
 }
@@ -47,6 +47,10 @@ h3 {
   margin-top: 1.688rem;
   margin-bottom: 1rem;
   font-weight: 400;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 h4 {
@@ -150,18 +154,11 @@ small, aside {
 
 .lead {
   display: inline-block;
-  padding-top: $space;
-  padding-right: $space*2;
-  border-top: 1px solid $body-copy-light;
   color: $body-copy-light;
   font-size: 0.8333rem;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-
-  &::before {
-
-  }
 
   + .title {
     margin-top: $space/4;
@@ -170,7 +167,6 @@ small, aside {
 
 .title {
   color: $body-copy;
-  font-family: 'Merriweather', serif;
   font-size: 1.5rem;
   font-weight: 900;
   line-height: 1.3;

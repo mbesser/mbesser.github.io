@@ -1,29 +1,17 @@
-<div id="work" class="module">
+<div id="work" class="module module--angled-top">
   <div class="module__body">
-    <h2>Latest Works</h2>
-    {% for post in site.categories.portfolio limit:5 %}
-      <div class="grid grid--golden">
-        <header class="grid__item">
-          <h4 class="lead">
-            {{ post.lead }}
-          </h4>
-          <h3 class="title">
-            {{ post.title }}
-          </h3>
-          <p class="excerpt">
-            {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
-          </p>
-          <!-- <a class="link--highlight" href="{{ post.url }}" title="Details about the project {{ post.lead }}">
-            Read more
-          </a> -->
-          {% include post/post_details.html %}
-        </header>
-        <article class="grid__item">
-          <div class="browser">
-            <img src="{{ site.baseurl }}/img/{{ post.image }}" alt="Screenshot: {{ post.title }}">
+    <h2>The Work</h2>
+    <div class="work-grid">
+      {% for case_study in site.case_studies %}
+        <div class="work-grid-item">
+          <div class="text">
+            <h3>{{ case_study.title }}</h3>
+            <p>{{ case_study.description }}</p>
+            <a href="{{ case_study.url }}">View Case Study</a>
           </div>
-        </article>
-      </div>
-    {% endfor %}
+          <img class="{{ case_study.title_image.type }}" src="{{ site.baseurl }}/img/{{ case_study.project_name }}/{{ case_study.title_image.url }}" alt="{{ case_study.title_image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>

@@ -3,22 +3,21 @@
     <h2>What they are saying</h2>
     {% for quote in testimonial %}
         <blockquote class="testimonial">
-          <p class="testimonial__quote">
+          <div class="testimonial__quote">
             {% if quote.quote_en %}
-              {{ quote.quote_en | smartify }}
+              {{ quote.quote_en | markdownify | smartify }}
             {% else %}
-              {{ quote.quote_de | smartify }}
+              {{ quote.quote_de | markdownify | smartify }}
             {% endif %}
-          </p>
-          <div class="testimonial__author">
-            {% if quote.person_image %}
-              <img class="testimonial__image" src="{{ site.baseurl }}/img/testimonials/{{ quote.person_image }}" alt="{{ quote.person_image_alt }}">
-            {% endif %}
-            <span>  
-              <a href="{{ quote.person_url }}"><strong>{{ quote.person_name }}</strong></a>
-              <br>
-              <small>{{ quote.person_role }}, {{ quote.person_company }}</small>
-            </span>
+            <div class="testimonial__author">
+              {% if quote.person_image %}
+                <img class="testimonial__image" src="{{ site.baseurl }}/img/testimonials/{{ quote.person_image }}" alt="{{ quote.person_image_alt }}">
+              {% endif %}
+              <span>
+                <strong class="d-block">{{ quote.person_name }}</strong>
+                {{ quote.person_role }}, {{ quote.person_company }}
+              </span>
+            </div>
           </div>
         </blockquote>
     {% endfor %}

@@ -4,7 +4,7 @@ layout: default
 <article class="post">
   <header>
     <div class="text">
-      <h1>{{ page.title }}</h1>
+      <h1 class="post__title">{{ page.title }}</h1>
       {{ page.description | markdownify | smartify }}
       {% if page.key_facts %}
         {% include case_studies/key_facts.html %}
@@ -58,4 +58,19 @@ layout: default
   {% if testimonial_count > 0 %}
     {% include case_studies/testimonials.html %}
   {% endif %}
+  
+  <section class="post__section">
+    <div class="content">
+      <h3>More case studies</h3>
+      <div class="grid-thirds">
+        {% for case_study in site.case_studies %}
+        {% unless case_study.project_name != page.project_name %}{% continue %}{% endunless %}
+          <a href="{{ case_study.url }}">
+            <span>{{ case_study.title }}</span>
+            <img class="{{ case_study.title_image.type }}" src="{{ site.baseurl }}/img/{{ case_study.project_name }}/{{ case_study.title_image.url }}" alt="See case study for {{ case_study.project_name }}.">
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </article>

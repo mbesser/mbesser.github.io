@@ -2,7 +2,8 @@
 layout: case_study
 project_name: pelvina
 title: pelvina
-description: pelvina is the first certified digital prevention course for the pelvic floor in germany. In a smartphone app, users learn how the pelvic floor is structured and with which exercises it can be perceived and strengthened.
+description: |
+  Provide women with knowledge about their pelvic floor: How is it structured and which exercises help perceiving and strengthening it to prevent related diseases. Through a smartphone app, pelvina delivers the first certified digital prevention course for the pelvic floor in germany.
 title_image:
   url: pelvina_cover_image.png
   alt: A screenshot from the pelvina app displayed in an iPhone. It shows the list of course modules which at the moment presents the first module. Overlaying the smartphone there is the app icon of plevina which shows an exercising female figure, Paulina.
@@ -32,39 +33,40 @@ roles:
 sections:
   - title: Information Architecture & User Flows
     contents:
-      - heading: Combined Site and Content Map
-        text: |
-          This document was used to document the content structure of the app and to communicate with involved actors.
-          
-          The challenge was to transfer the contents and methods of a common prevention course with personal participation into a digital form. The course structure and required interaction possibilities in the course are regulated by legal provisions.
-        images:
+      - images:
           - image_url: pelvina_ia.png
             image_alt: A diagram that shows pelvina's content model and the relations within.
-            image_caption: "Content Model"
-      - heading: Process Flow Diagram & Wireframe Screen Flow
-        text: |
-          Process of how users access the module content. Based on this a first screen flow for a prototype to test the inner logic.
+            image_caption: |
+              **Combined Site and Content Map**
+
+              This document was used to document the content structure of the app and to communicate with involved actors.
           
-          The core of the course are the modules. Their implementation must be simple, straightforward and comprehensible. To be reimbursed, users must have consumed all content. The app supports them in doing so.
-        images:
+              The challenge was to transfer the contents and methods of a common prevention course with personal participation into a digital form. The course structure and required interaction possibilities in the course are regulated by legal provisions.
+      - images:
           - image_url: pelvina_flow_diagram.png
             image_alt: A hand sketched flow diagram that shows how users should advance through the course.
+            image_caption: |
+              **Process Flow Diagram & Wireframe Screen Flow**
+
+              Process of how users access the module content. Based on this a first screen flow for a prototype to test the inner logic.
+          
+              The core of the course are the modules. Their implementation must be simple, straightforward and comprehensible. To be reimbursed, users must have consumed all content. The app supports them in doing so.
   - title: Wireframes and Prototype
     contents:
-      - heading: Low-fidelity wireframes with realistic content for an interactive prototype
-        text: |
-          Once the core functions, course structure and initial content were defined, this prototype was used to further test the concept. All essential parts of the app are included.
+        - text: |
+            Once the core functions, course structure and initial content were defined, this prototype was used to further test the concept. All essential parts of the future product are included.
+          images:
+            - image_url: pelvina_wireframe_prototype.png
+              image_alt: A screenshot that shows a lot of grouped artboards in Sketch.
+              image_caption: |
+                **Low-fidelity wireframes for an interactive prototype**
 
-          This prototype formed the basis for communication with product management and software developers and created a common understanding of the product vision.
-        images:
-          - image_url: pelvina_wireframe_prototype.png
-            image_alt: A screenshot that shows a lot of grouped artboards in Sketch.
-        image_caption: In Sketch I created wireframe screen mockups for each step in the user journey. Using InVision, I merged all of them into a simple prototype.
+                In Sketch I created wireframe screen mockups for each step in the user journey. Using InVision, I merged all of them into a simple prototype. It formed the basis for communication with product management and software developers and created a common understanding of the product vision.
   - title: Visual & Interface Design 1.0
     contents:
       - heading: Introduction and addressing the users
         text: |
-          For the heterogeneous target group, a design language had to be developed that did justice to the medical context and quality requirements as well as the sensitivity of the topic (pelvic floor and bladder weakness).
+          I created a restrained and functional design language that worked well within the medical context and with the heterogeneous target group. The ideacalm and clear did justice to the medical context and quality requirements as well as the sensitivity of the topic (pelvic floor and bladder weakness).
         images:
           - image_url: pelvina_design_v1_intro.png
             image_alt: Three device mockups that present some of the first screens users saw in version 1 when starting pelvina for the first time.
@@ -76,13 +78,14 @@ sections:
           - image_url: pelvina_design_v1_course.png
             image_alt: Three device mockups that present some of the screen flow users go through when they dive into pelvina's content.
             image_caption: Drill-down into the course structure. Each course module consists module units which include the actual blocks of content.
-      - heading: "Course contents: exercises, knowledge and quizzes"
+      - heading: Exercises, knowledge and quizzes
         text: |
-          Consumable content is displayed as a stack of cards. Once the content is completed on a card, the card disappears. The further the progress, the fewer cards – in addition to a classic progress bar, information about the current position in the content is thus constantly provided.
+          The course consists of three main parts. Knowledge content and exercises instructions are conveyed through video, mandatory quizzes at the end of each course unit help evaluating learning success.
         images:
           - image_url: pelvina_design_v1_content.png
             image_alt: Three device mockups that present how pelvina's course content is displayed.
-            image_caption: "The course content consists of three main parts: Knowledge and exercises which are both presented as videos and lastly quizzes."
+            image_caption: |
+              Consumable content is displayed as a stack of cards. Once the content is completed on a card, the card disappears. The further the progress, the fewer cards – in addition to a classic progress bar, information about the current position in the content is thus constantly provided.
   - title: Styleguide & Pattern Library
     contents:
       - heading: Interface design directly implemented as living style guide
@@ -147,7 +150,7 @@ sections:
     contents:
       - heading: Getting regular user feedback and good ratings
         text: |
-          The aim was to obtain user feedback in a discreet way with reference to important KPIs. Furthermore. Users should be encouraged to give ratings in the App Stores.
+          The aim was to obtain user feedback in a discreet way with reference to important KPIs. Furthermore, users should be encouraged to give ratings in the App Stores.
 
           The concept combines both goals. Various questions about the user experience are asked at key points in the User Journey e.g after completing the first course module. If users signal dissatisfaction, they are asked for feedback. If they are satisfied, they are asked for a rating in the respective App Store.
           

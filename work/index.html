@@ -3,17 +3,21 @@ layout: default
 ---
 
 <div class="module">
-  <div class="module__header">
-    <h2>Select projects I've worked on</h2>
-  </div>
-  <div class="module__body">
-    <article class="grid grid--thirds">
-      {% for case_study in site.case_studies %}
-        <a href="{{ case_study.url }}" class="grid__item">
-          <h3>{{ case_study.title }}</h3>
-          <p>{{ case_study.description }}</p>
-        </a>
-      {% endfor %}
-    </article>
-  </div>
+  <article class="module__body">
+    <section class="post__section ">
+      <h2>Select projects I've worked on</h2>
+      <div class="content work-grid">
+        {% for case_study in site.case_studies %}
+          <div class="work-grid-item">
+            <div class="text">
+              <h3>{{ case_study.title }}</h3>
+              <p>{{ case_study.description }}</p>
+              <a href="{{ case_study.url }}">View Case Study</a>
+            </div>
+            <img class="{{ case_study.title_image.type }}" src="{{ site.baseurl }}/img/{{ case_study.project_name }}/{{ case_study.title_image.url }}" alt="{{ case_study.title_image.alt }}">
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </article>
 </div>
