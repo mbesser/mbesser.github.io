@@ -8,6 +8,9 @@
   quote_de: |
     Die act Webapplikation ist seit 2014 produktiv im Einsatz und begleitet Unternehmen dabei, Energie und Emissionen zu sparen. Rund 150 User nutzen die Webapplikation regelmässig, um Zielvereinbarungen abzuschliessen und Effizienzmassnahmen umzusetzen. Matti Besser hat unser Projekt zu Beginn während zwei Jahren in den Bereichen Usability und Design unterstützt. Er war massgeblich dafür verantwortlich, einen komplexen Sachverhalt für den User verständlich und intuitiv in einer Webapplikation abzubilden und somit das Endprodukt entscheidend verbessern. Die Zusammenarbeit mit Matti Besser war sowohl fachlich als auch menschlich in jeder Hinsicht sehr angenehm und wertvoll. Wir können ihn als Spezialisten im Bereich Usability und Design jederzeit weiterempfehlen.
   person_name: Lea Fleischli
+  person_image: lea_fleischli.jpg
+  person_image_alt: A portrait of Lea Fleischli
+  person_url: https://www.linkedin.com/in/lea-fleischli-9b7611b1/
   person_role: Project Lead
   person_company: act Cleantech Agentur Schweiz
 - project: medi
@@ -36,9 +39,37 @@
 - project: pumpind
   quote_de: |
     Das von Matti entwickelte, intuitiv nutzbare Design der Pumpind-Webapplikation ermöglicht Personen, die einen Umwälzpumpentausch zur Förderung anmelden wollen, schnell und angenehm ans Ziel zu gelangen. Dank der klar strukturierten Inhalte auf der Website sind KundInnen über die wichtigen Eckpunkte des Programmes informiert, ohne davon überfordert zu sein. Die Anmeldung des Fördervorhabens mittels der Applikation ist dann ein Leichtes. Die Zusammenarbeit mit Matti war stets angenehm. Er hat unsere Bedürfnisse und nicht zuletzt die unserer Kunden erkannt, mit großer Bereitschaft aufgenommen und die Anforderungen in schönes, leicht benutzbares Design übersetzt.
+  quote_en: |
+    The intuitive design of the Pumpind web application, developed by Matti, enables people who want to register a circulator exchange for delivery to reach their destination quickly and comfortably. Thanks to the clearly structured content on the website, customers are informed about the key points of the programme without being overwhelmed by it. The application then makes it easy to apply for funding. The cooperation with Matti was always pleasant. He recognized our needs and not least those of our customers, accepted them with great readiness and translated the requirements into a beautiful, easy-to-use design.
   person_name: Nico Pfäffli
   person_image: nico_pfaeffli.jpg
   person_image_alt: A portrait of Nico Pfäffli
   person_url: https://www.linkedin.com/in/nico-pf%C3%A4ffli-b20b9190/
   person_role: Project Manager
   person_company: Energie Zukunft Schweiz AG
+- project: pelvina
+  quote_de: |
+    Ein Produktteam, das Matti an Bord hat, kann sich glücklich schätzen! Wir habe drei Jahre zusammengearbeitet und ich habe Matti immer voller absoluter Einsatzbereitschaft und als exzellenten Teamplayer — in guten wie in schlechten Zeiten — erlebt. Ich kenne nur wenige Leute, die so wie Matti mit beeindruckender Wissbegierde und Herzblut an ihrem Job hängen. Als erster Design-Ansprechpartner hat er unsere Produktideen immer aus Nutzerperspektive gesehen, neueste Trends und Insights aus seinem Network eingebracht und konstruktive Lösungen geboten. Matti ist ein echter Traum-Kollege und dank seines Tech-Wissens ein riesiger Mehrwert für alle Produktteams, die nach den Sternen greifen. Ich wünsche ihm von Herzen alles Gute!
+  person_name: Kathrin Boll
+  person_image: kathrin_boll.jpg
+  person_image_alt: A portrait of Kathrin Boll
+  person_role: Product Manager
+  person_url: https://www.linkedin.com/in/kathrin-boll-360769113/
+  person_company: Temedica
+- quote_en: I was glad to work with Matti at Temedica. He was one of the best team leads I ever had. He's always willing to provide feedback, to help analyzing design problems and guiding me to find better solutions in our projects. Matti is open to discuss any work issue that comes up and manages to find nice solutions. His motivation and positive vibes are contagious. It's nice to work with honest and kind people like Matti. I already miss our collaboration.
+  person_name: Athina Lapidaki
+  person_image: athina_lapidaki.jpg
+  person_url: https://www.linkedin.com/in/athinalapidaki/
+  person_role: UI/UX Designer
+  person_company: Temedica
+- project: pelvina
+  quote_de: |
+    I had the pleasure of working with Matti at Temedica. I was impressed by his ability to deal with even the toughest UX/UI challenges – effortlessly. It seemed to come perfectly naturally to him.
+    He consistently demonstrated a good methodological knowledge and out-of-the-box thinking to find new solutions. Matti is dedicated, self-motivated, methodical, and can deal with stressful situations and tough deadlines.
+    Furthermore, he was able to familiarize himself quickly and independently with new challenges. It was a pleasure to work with him. Matti would be an asset to any company.
+  person_name: Michael Karlsburger
+  person_image: michael_karlsburger.jpg
+  person_image_alt: A portrait of Michael Karlsburger
+  person_role: Product Owner
+  person_url: https://www.linkedin.com/in/michaelkarlsburger/
+  person_company: Temedica

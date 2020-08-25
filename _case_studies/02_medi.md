@@ -2,7 +2,7 @@
 layout: case_study
 project_name: medi
 title: medi companion
-description: medi companion is an app to support patients with lipedema and lymphedema. The app offers a comprehensive health program that provides indication-specific education, tips on exercise, nutrition and fashion, and explains how to use medical aids.
+description: Support patients with lipedema and lymphedema with a comprehensive health program. The program provides indication-specific education which includes tips on exercise and nutrition, fashion and the use of medical aids.
 title_image:
   url: medi_cover_image.png
   alt: A screenshot from the medi companion app displayed in an iPhone. It shows the a part of the app where users can see a chart that tells how long they wore their compression stockings during the previous seven days.
@@ -45,7 +45,7 @@ sections:
             image_alt: A screenshot of many low-fidelity, black and white wireframes that show rough concepts of all relevant app parts and features.
             image_caption: |
               Based on the requirements and provided insights from prior research I created this low-fidelity wireframe prototype. Filled with realistic content drafts this artefact gave stakeholders an impression of the user flow in the product to be and ensured alignment about the direction of product development. This prototype went through several iterations in which stakeholder feedback and new findings were taken into account.
-  - title: Conversational UI
+  - title: Conversational Interface
     contents:
       - heading: Chatbot as product assistant
         text: |
@@ -60,7 +60,7 @@ sections:
               When the user's problem is not listed, they are offered to send a message directly to a support representative to seek further help. At the end of the chatbot dialogue a new message appears that invites users to continue with their health programmes.
   - title: Gamification for increased user engagement
     contents:
-      - heading: "Core idea: Reaching the goal together"
+      - heading: "Reaching the goal together"
         text: |
           After a workshop with an external consultant the team (consisting of the product manager, a product developer and myself) developed a gamification concept and story outline which I translated into a paper prototype. This prototype communicated the concept to the stakeholders involved and enabled a constructive dialogue about details and next steps.
 

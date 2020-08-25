@@ -12,12 +12,9 @@ collections:
     output: true
     permalink: /:collection/:name
 email: hello@mattibesser.com
-description: 'Freelance web designer and front-end developer based in Berlin. Focussing
-  on HTML and CSS.
-
-'
+description: 'Digital Product Design. UX/UI & Frontend Code.'
 baseurl: ''
-url: http://mattibesser.com
+url: https://mattibesser.com
 author: Matti Besser
 twitter_username: m_besser
 github_username: mbesser
