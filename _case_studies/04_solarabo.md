@@ -1,4 +1,5 @@
 ---
+published: true
 layout: case_study
 project_name: solarabo
 title: SolarAbo
