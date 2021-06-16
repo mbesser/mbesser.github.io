@@ -1,4 +1,5 @@
 ---
+published: false
 layout: case_study
 project_name: pelvina
 title: pelvina
