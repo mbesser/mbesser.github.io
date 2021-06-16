@@ -64,11 +64,13 @@ layout: default
       <h3>More case studies</h3>
       <div class="grid-thirds">
         {% for case_study in site.case_studies %}
-        {% unless case_study.project_name != page.project_name %}{% continue %}{% endunless %}
-          <a href="{{ case_study.url }}">
-            <span>{{ case_study.title }}</span>
-            <img class="{{ case_study.title_image.type }}" src="{{ site.baseurl }}/img/{{ case_study.project_name }}/{{ case_study.title_image.url }}" alt="See case study for {{ case_study.project_name }}.">
-          </a>
+          {% unless case_study.project_name != page.project_name %}{% continue %}{% endunless %}
+          {% if case_study.published %}
+            <a href="{{ case_study.url }}">
+              <span>{{ case_study.title }}</span>
+              <img class="{{ case_study.title_image.type }}" src="{{ site.baseurl }}/img/{{ case_study.project_name }}/{{ case_study.title_image.url }}" alt="See case study for {{ case_study.project_name }}.">
+            </a>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
