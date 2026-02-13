@@ -129,82 +129,114 @@
       min-height: 100vh;
       background-color: var(--c-dark);
       display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 2rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      right: -10%;
-      width: 55vw;
-      height: 55vw;
-      background: radial-gradient(circle at center,
-        rgba(241, 187, 82, 0.09) 0%,
-        transparent 68%);
-      pointer-events: none;
-    }
-
-    .hero__main {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas: 'portrait' 'text';
-      align-items: end;
-      padding-bottom: var(--space-lg);
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero__main {
-        grid-template-columns: 1fr auto;
-        grid-template-areas: 'text portrait';
-        gap: 4rem;
+    @media (min-width: 860px) {
+      .hero {
+        grid-template-columns: 58fr 42fr;
+        grid-template-rows: 1fr;
       }
     }
 
-    .hero__text {
-      grid-area: text;
+    /* ---- text panel ---- */
+    .hero__text-panel {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__content {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      padding-bottom: var(--space-lg);
     }
 
-    .hero__portrait {
-      grid-area: portrait;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      opacity: 0;
-      animation: fadeIn 1s 0.6s var(--ease) forwards;
+    /* ---- image panel ---- */
+    .hero__image-panel {
+      position: relative;
+      overflow: hidden;
+      /* mobile: fixed height above text */
+      height: 52vw;
+      min-height: 220px;
+      max-height: 420px;
+      order: -1;
     }
 
-    .hero__portrait img {
+    @media (min-width: 860px) {
+      .hero__image-panel {
+        height: auto;
+        max-height: none;
+        order: 0;
+      }
+    }
+
+    .hero__image-panel img {
       display: block;
-      width: clamp(140px, 22vw, 300px);
-      height: clamp(140px, 22vw, 300px);
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: var(--radius);
+      object-position: 50% 12%;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
-      outline: 2px solid rgba(241, 187, 82, 0.35);
-      outline-offset: 4px;
-      box-shadow: 0 0 0 1px rgba(241, 187, 82, 0.15),
-                  0 20px 60px rgba(0, 0, 0, 0.4);
+      transform: scale(1.08);
+      transform-origin: center 20%;
+      opacity: 0;
+      filter: blur(18px) saturate(0.3) brightness(0.7);
+      animation: imgReveal 1.4s 0.5s var(--ease) forwards;
     }
 
-    @media (max-width: 767px) {
-      .hero__portrait {
-        justify-content: flex-start;
-      }
-      .hero__portrait img {
-        width: 96px;
-        height: 96px;
+    @keyframes imgReveal {
+      0%   { opacity: 0;   filter: blur(18px) saturate(0.3) brightness(0.7); transform: scale(1.08) translateY(0); }
+      40%  { opacity: 1;   filter: blur(6px)  saturate(0.7) brightness(0.9); transform: scale(1.04) translateY(0); }
+      100% { opacity: 1;   filter: blur(0)    saturate(1)   brightness(1);   transform: scale(1)    translateY(0); }
+    }
+
+    /* scanline texture */
+    .hero__image-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.06) 3px,
+        rgba(0, 0, 0, 0.06) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* left-edge bleed into text panel */
+    .hero__image-panel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        var(--c-dark) 0%,
+        rgba(21, 46, 59, 0.55) 18%,
+        transparent 45%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @media (max-width: 859px) {
+      /* on mobile, fade bottom of image into background */
+      .hero__image-panel::after {
+        background: linear-gradient(
+          to bottom,
+          transparent 40%,
+          var(--c-dark) 100%
+        );
       }
     }
 
@@ -256,10 +288,7 @@
       display: flex;
       align-items: center;
       gap: 0.875rem;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding-top: 2.5rem;
+      padding: 2rem 0;
       color: rgba(255, 255, 255, 0.25);
       font-size: 0.6875rem;
       letter-spacing: 0.14em;
@@ -791,8 +820,8 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
-    <div class="hero__main">
-      <div class="hero__text">
+    <div class="hero__text-panel">
+      <div class="hero__content">
         <span class="hero__eyebrow">
           <span class="hero__eyebrow-line" aria-hidden="true"></span>
           UX &amp; Product Design
@@ -800,13 +829,13 @@
         <h1 class="hero__name">Matti<br>Besser.</h1>
         <p class="hero__tagline">Making complex financial products feel&nbsp;simple — for the people who depend on&nbsp;them.</p>
       </div>
-      <div class="hero__portrait">
-        <img src="img/matti-avatar.png" alt="Matti Besser" width="512" height="512">
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span class="hero__scroll-tick"></span>
+        Scroll
       </div>
     </div>
-    <div class="hero__scroll-hint" aria-hidden="true">
-      <span class="hero__scroll-tick"></span>
-      Scroll
+    <div class="hero__image-panel" aria-hidden="true">
+      <img src="img/matti-avatar.png" alt="">
     </div>
   </section>
 
