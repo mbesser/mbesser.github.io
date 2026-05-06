@@ -18,10 +18,12 @@
     ============================================== */
     :root {
       --c-dark:        #152E3B;
+      --c-dark-rgb:    21, 46, 59;
       --c-text:        #324656;
       --c-text-muted:  #5c7a8e;
       --c-bg:          #FFFAF0;
       --c-gold:        #F1BB52;
+      --c-gold-rgb:    241, 187, 82;
       --c-gold-mid:    #FDE6B7;
       --c-red:         #C94F41;
       --c-white:       #ffffff;
@@ -56,6 +58,8 @@
       background-color: var(--c-bg);
       line-height: 1.65;
       overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -78,7 +82,7 @@
     }
 
     .nav.is-scrolled {
-      background: rgba(21, 46, 59, 0.94);
+      background: rgba(var(--c-dark-rgb), 0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -125,30 +129,44 @@
        HERO
     ============================================== */
     .hero {
+      position: relative;
       min-height: 100svh;
       min-height: 100vh;
-      background-color: var(--c-dark);
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
-      position: relative;
+      background-color: var(--c-hero-bg, #e4e0d7);
       overflow: hidden;
     }
 
-    @media (min-width: 860px) {
-      .hero {
-        grid-template-columns: 58fr 42fr;
-        grid-template-rows: 1fr;
-      }
+    /* readability gradient so text sits clearly over the halftone portrait */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, var(--c-hero-bg-88, rgba(228,224,215,0.88)) 0%, var(--c-hero-bg-50, rgba(228,224,215,0.5)) 36%, transparent 62%),
+        linear-gradient(to top,   var(--c-hero-bg-70, rgba(228,224,215,0.7)) 0%, transparent 36%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
     }
 
     /* ---- text panel ---- */
     .hero__text-panel {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 2rem;
       position: relative;
       z-index: 2;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 100svh;
+      min-height: 100vh;
+      padding: 2rem;
+      max-width: 680px;
     }
 
     .hero__content {
@@ -158,93 +176,11 @@
       padding-bottom: var(--space-lg);
     }
 
-    /* ---- image panel ---- */
-    .hero__image-panel {
-      position: relative;
-      overflow: hidden;
-      /* mobile: fixed height above text */
-      height: 52vw;
-      min-height: 220px;
-      max-height: 420px;
-      order: -1;
-    }
-
-    @media (min-width: 860px) {
-      .hero__image-panel {
-        height: auto;
-        max-height: none;
-        order: 0;
-      }
-    }
-
-    .hero__image-panel img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 12%;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-      transform: scale(1.08);
-      transform-origin: center 20%;
-      opacity: 0;
-      filter: blur(18px) saturate(0.3) brightness(0.7);
-      animation: imgReveal 1.4s 0.5s var(--ease) forwards;
-    }
-
-    @keyframes imgReveal {
-      0%   { opacity: 0;   filter: blur(18px) saturate(0.3) brightness(0.7); transform: scale(1.08) translateY(0); }
-      40%  { opacity: 1;   filter: blur(6px)  saturate(0.7) brightness(0.9); transform: scale(1.04) translateY(0); }
-      100% { opacity: 1;   filter: blur(0)    saturate(1)   brightness(1);   transform: scale(1)    translateY(0); }
-    }
-
-    /* scanline texture */
-    .hero__image-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0, 0, 0, 0.06) 3px,
-        rgba(0, 0, 0, 0.06) 4px
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* left-edge bleed into text panel */
-    .hero__image-panel::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        var(--c-dark) 0%,
-        rgba(21, 46, 59, 0.55) 18%,
-        transparent 45%
-      );
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @media (max-width: 859px) {
-      /* on mobile, fade bottom of image into background */
-      .hero__image-panel::after {
-        background: linear-gradient(
-          to bottom,
-          transparent 40%,
-          var(--c-dark) 100%
-        );
-      }
-    }
-
     .hero__eyebrow {
       display: flex;
       align-items: center;
       gap: 0.875rem;
-      color: var(--c-gold);
+      color: var(--c-accent-muted, #4a6a4a);
       font-size: 0.78rem;
       font-weight: 400;
       letter-spacing: 0.16em;
@@ -258,7 +194,7 @@
       display: block;
       width: 2rem;
       height: 1px;
-      background: var(--c-gold);
+      background: var(--c-accent-muted, #4a6a4a);
       flex-shrink: 0;
     }
 
@@ -266,7 +202,7 @@
       font-size: clamp(3.25rem, 10vw, 9rem);
       font-weight: 900;
       line-height: 0.92;
-      color: var(--c-white);
+      color: var(--c-accent, #2d3e2c);
       letter-spacing: -0.025em;
       margin-bottom: 2rem;
       opacity: 0;
@@ -277,7 +213,7 @@
       font-size: clamp(1.0625rem, 2.2vw, 1.375rem);
       font-weight: 300;
       font-style: italic;
-      color: rgba(255, 255, 255, 0.52);
+      color: var(--c-accent-faint, rgba(45, 62, 44, 0.55));
       max-width: 34ch;
       line-height: 1.55;
       opacity: 0;
@@ -289,7 +225,7 @@
       align-items: center;
       gap: 0.875rem;
       padding: 2rem 0;
-      color: rgba(255, 255, 255, 0.25);
+      color: var(--c-accent-faint, rgba(45, 62, 44, 0.30));
       font-size: 0.6875rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -301,8 +237,22 @@
       display: block;
       width: 1.5rem;
       height: 1px;
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--c-accent-faint, rgba(45, 62, 44, 0.22));
       animation: tickExtend 2.4s 1.5s ease-in-out infinite;
+    }
+
+    @media (max-width: 599px) {
+      .hero::before {
+        background:
+          linear-gradient(to bottom, var(--c-hero-bg-88, rgba(228,224,215,0.88)) 0%, var(--c-hero-bg-50, rgba(228,224,215,0.5)) 45%, transparent 70%),
+          linear-gradient(to top,    var(--c-hero-bg-70, rgba(228,224,215,0.7)) 0%, transparent 28%);
+      }
+
+      .hero__content {
+        justify-content: flex-start;
+        padding-top: 6rem;
+        padding-bottom: 0;
+      }
     }
 
     /* ==============================================
@@ -377,7 +327,7 @@
       flex-direction: column;
       gap: 0.75rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(50, 70, 86, 0.12);
+      border-top: 1px solid rgba(var(--c-dark-rgb), 0.12);
     }
 
     .about__meta-row {
@@ -415,8 +365,8 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 1px;
-      background: rgba(50, 70, 86, 0.1);
-      border: 1px solid rgba(50, 70, 86, 0.1);
+      background: rgba(var(--c-dark-rgb), 0.1);
+      border: 1px solid rgba(var(--c-dark-rgb), 0.1);
       border-radius: calc(var(--radius) + 1px);
       overflow: hidden;
     }
@@ -536,7 +486,7 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg,
-        rgba(241, 187, 82, 0.04) 0%,
+        rgba(var(--c-gold-rgb), 0.04) 0%,
         transparent 60%);
       opacity: 0;
       transition: opacity 0.4s var(--ease);
@@ -544,7 +494,7 @@
 
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(21, 46, 59, 0.25);
+      box-shadow: 0 20px 50px rgba(var(--c-dark-rgb), 0.25);
     }
 
     .project-card:hover::after { opacity: 1; }
@@ -555,8 +505,8 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--c-gold);
-      background: rgba(241, 187, 82, 0.1);
-      border: 1px solid rgba(241, 187, 82, 0.22);
+      background: rgba(var(--c-gold-rgb), 0.1);
+      border: 1px solid rgba(var(--c-gold-rgb), 0.22);
       padding: 0.25rem 0.6rem;
       border-radius: 2px;
       width: fit-content;
@@ -600,7 +550,7 @@
     ============================================== */
     .clients {
       padding: var(--space-lg) 2rem;
-      border-top: 1px solid rgba(50, 70, 86, 0.08);
+      border-top: 1px solid rgba(var(--c-dark-rgb), 0.08);
     }
 
     .clients__label {
@@ -652,7 +602,7 @@
       width: 60vw;
       height: 60vw;
       background: radial-gradient(circle,
-        rgba(241, 187, 82, 0.07) 0%,
+        rgba(var(--c-gold-rgb), 0.07) 0%,
         transparent 68%);
       pointer-events: none;
     }
@@ -699,9 +649,9 @@
     }
 
     .btn-primary:hover {
-      background: #fac93e;
+      background: var(--c-gold);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(241, 187, 82, 0.3);
+      box-shadow: 0 8px 24px rgba(var(--c-gold-rgb), 0.3);
     }
 
     .btn-arrow {
@@ -715,7 +665,7 @@
        FOOTER
     ============================================== */
     .footer {
-      background: rgba(21, 46, 59, 0.98);
+      background: rgba(var(--c-dark-rgb), 0.98);
       padding: 1.75rem 2rem;
       display: flex;
       flex-direction: column;
@@ -820,6 +770,7 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero__text-panel">
       <div class="hero__content">
         <span class="hero__eyebrow">
@@ -833,9 +784,6 @@
         <span class="hero__scroll-tick"></span>
         Scroll
       </div>
-    </div>
-    <div class="hero__image-panel" aria-hidden="true">
-      <img src="img/matti-avatar.png" alt="">
     </div>
   </section>
 
@@ -1041,6 +989,317 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── HALFTONE PORTRAIT ────────────────────────────────────────
+    // Loads the halftone portrait image, samples it on a dense grid, and
+    // renders each cell as a filled circle whose radius maps to pixel
+    // darkness. Every dot is stored individually for future interactivity
+    // (cursor effects, animation, hover response).
+    (function () {
+      var canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+
+      // ---- halftone parameters ----
+      // Dot spacing is set in "image space" — the number of sample rows across
+      // the portrait stays constant regardless of how large or small the
+      // portrait renders, so clarity and visual density are viewport-independent.
+      var DOTS_PER_PORTRAIT = 200;    // target sample rows across portrait height
+      var MAX_R_RATIO  = 0.54;        // max dot radius as a fraction of spacing
+      var MIN_R        = 0.3;         // absolute min dot radius (px)
+      var BG_COLOR     = '#e4e0d7';   // cream background
+      var DOT_COLOR    = '#2d3e2c';   // dark olive green (default)
+      var BRIGHT_CUT   = 0.90;        // skip pixels lighter than this
+      var PORTRAIT_SCALE = 0.80;      // overridden per viewport inside buildAndRender
+
+      var W = 0, H = 0;
+      var dots = [];                   // [{ x, y, baseR, r }]
+      var img = new Image();
+      var imgLoaded = false;
+      var colorLoaded = false;
+      var resizeTimer;
+
+      // ---- Harmonious colour scheme per session ----
+      // 1. Pick a random seed hue
+      // 2. Ask The Color API for an analogic 5-colour scheme
+      // 3. Sort by luminance → assign roles: primary (dots + name),
+      //    secondary (eyebrow), tertiary (tagline), and derive a
+      //    tinted background from the lightest colour in the scheme
+      // 4. Enforce WCAG AA on the primary by darkening if needed
+
+      function hslToRgb(h, s, l) {
+        h /= 360; s /= 100; l /= 100;
+        if (s === 0) return [Math.round(l * 255), Math.round(l * 255), Math.round(l * 255)];
+        function f(p, q, t) {
+          if (t < 0) t += 1; if (t > 1) t -= 1;
+          if (t < 1/6) return p + (q - p) * 6 * t;
+          if (t < 1/2) return q;
+          if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          return p;
+        }
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+        return [Math.round(f(p, q, h + 1/3) * 255),
+                Math.round(f(p, q, h) * 255),
+                Math.round(f(p, q, h - 1/3) * 255)];
+      }
+
+      function toHex(r, g, b) {
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+
+      function luminance(r, g, b) {
+        function s(c) { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+        return 0.2126 * s(r) + 0.7152 * s(g) + 0.0722 * s(b);
+      }
+
+      function contrastVsBg(bgLum, r, g, b) {
+        var l = luminance(r, g, b);
+        return (Math.max(bgLum, l) + 0.05) / (Math.min(bgLum, l) + 0.05);
+      }
+
+      function enforceContrast(bgLum, h, s, l, minRatio) {
+        var rgb = hslToRgb(h, s, l);
+        while (contrastVsBg(bgLum, rgb[0], rgb[1], rgb[2]) < minRatio && l > 8) {
+          l--;
+          rgb = hslToRgb(h, s, l);
+        }
+        return { rgb: rgb, hex: toHex(rgb[0], rgb[1], rgb[2]), l: l };
+      }
+
+      function applyScheme(colors) {
+        // colors = [{ hex, r, g, b, h, s, l, name }, ...] from the API
+        // The analogic-complement scheme returns analogic neighbours AND
+        // a complement pair. We separate them by hue distance from the
+        // median hue to identify which are analogic vs complement.
+        var hues = colors.map(function (c) { return c.h; });
+        hues.sort(function (a, b) { return a - b; });
+        var medianH = hues[Math.floor(hues.length / 2)];
+
+        var analogic = [], complement = [];
+        for (var i = 0; i < colors.length; i++) {
+          var diff = Math.abs(colors[i].h - medianH);
+          if (diff > 180) diff = 360 - diff;
+          if (diff < 90) analogic.push(colors[i]);
+          else complement.push(colors[i]);
+        }
+        // Fallback: if separation failed, split first 4 / last 2
+        if (analogic.length === 0) { analogic = colors.slice(0, 4); complement = colors.slice(4); }
+        if (complement.length === 0) { complement = analogic.splice(-2, 2); }
+
+        // Sort each group by luminance (darkest first)
+        analogic.sort(function (a, b) { return luminance(a.r, a.g, a.b) - luminance(b.r, b.g, b.b); });
+        complement.sort(function (a, b) { return luminance(a.r, a.g, a.b) - luminance(b.r, b.g, b.b); });
+
+        // ---- Background: tinted from the analogic hue family ----
+        var bgH = analogic[0].h;
+        var bgRgb = hslToRgb(bgH, 10, 89);
+        var bgHex = toHex(bgRgb[0], bgRgb[1], bgRgb[2]);
+        var bgLum = luminance(bgRgb[0], bgRgb[1], bgRgb[2]);
+        BG_COLOR = bgHex;
+
+        // ---- Primary: ONE analogic colour for ALL text + dots ----
+        // Eyebrow and tagline use the same hue at reduced opacity — no
+        // hue mixing, no jarring green-next-to-blue.
+        var pri = enforceContrast(bgLum, analogic[0].h, analogic[0].s, analogic[0].l, 4.5);
+        var pr = pri.rgb[0], pg = pri.rgb[1], pb = pri.rgb[2];
+
+        // ---- Complement as accent (replaces --c-gold site-wide) ----
+        var accentSrc = complement[0] || analogic[0];
+        var accent = enforceContrast(bgLum, accentSrc.h, accentSrc.s, accentSrc.l, 3.0);
+        var accentMidRgb = hslToRgb(accentSrc.h, Math.max(15, accentSrc.s - 20), 85);
+        var accentMidHex = toHex(accentMidRgb[0], accentMidRgb[1], accentMidRgb[2]);
+
+        // ---- Apply everything ----
+        DOT_COLOR = pri.hex;
+        var root = document.documentElement.style;
+        var ar = accent.rgb[0], ag = accent.rgb[1], ab = accent.rgb[2];
+
+        // Core palette vars (override the :root defaults)
+        root.setProperty('--c-dark', pri.hex);
+        root.setProperty('--c-dark-rgb', pr + ',' + pg + ',' + pb);
+        root.setProperty('--c-text', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.82)');
+        root.setProperty('--c-text-muted', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.52)');
+        root.setProperty('--c-bg', bgHex);
+
+        // Hero text: single hue, opacity-based hierarchy
+        root.setProperty('--c-accent', pri.hex);
+        root.setProperty('--c-accent-muted', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.62)');
+        root.setProperty('--c-accent-faint', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.40)');
+
+        // Hero background + gradient overlays
+        root.setProperty('--c-hero-bg', bgHex);
+        root.setProperty('--c-hero-bg-88', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.88)');
+        root.setProperty('--c-hero-bg-50', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.50)');
+        root.setProperty('--c-hero-bg-70', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.70)');
+
+        // Accent / gold (site-wide: links, buttons, kickers, CTA, cards)
+        root.setProperty('--c-gold', accent.hex);
+        root.setProperty('--c-gold-rgb', ar + ',' + ag + ',' + ab);
+        root.setProperty('--c-gold-mid', accentMidHex);
+
+        if (analogic[0].name) root.setProperty('--c-accent-name', '"' + analogic[0].name + '"');
+      }
+
+      // ---- Fetch the scheme from The Color API ----
+      // analogic-complement gives ~4 analogic neighbours + ~2 complement
+      // colours — a full harmonious palette in one call.
+      var seedHue = Math.floor(Math.random() * 360);
+      fetch('https://www.thecolorapi.com/scheme?hsl=' + seedHue + ',55,32&mode=analogic-complement&count=6&format=json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var colors = data.colors.map(function (c) {
+            return {
+              hex: c.hex.value,
+              r: c.rgb.r, g: c.rgb.g, b: c.rgb.b,
+              h: c.hsl.h, s: c.hsl.s, l: c.hsl.l,
+              name: c.name.value
+            };
+          });
+          applyScheme(colors);
+          document.body.style.opacity = '1';
+          colorLoaded = true;
+          if (imgLoaded) buildAndRender();
+        })
+        .catch(function () {
+          document.body.style.opacity = '1';
+          colorLoaded = true;
+          if (imgLoaded) buildAndRender();
+        });
+
+      img.onload = function () {
+        imgLoaded = true;
+        if (colorLoaded) buildAndRender();
+      };
+      img.src = 'img/portrait-halftone.png';
+
+      function buildAndRender(skipAnim) {
+        var rect = canvas.parentElement.getBoundingClientRect();
+        W = rect.width  || window.innerWidth;
+        H = rect.height || window.innerHeight;
+        if (!W || !H) return;
+        canvas.width = W; canvas.height = H;
+
+        if (!imgLoaded || !colorLoaded) return;
+
+        // ---- Position the portrait: bottom-right, scaled by viewport ----
+        var portraitScale = W < 600 ? 0.62 : 0.80;
+        var imgAspect = img.width / img.height;
+        var drawH = H * portraitScale;
+        var drawW = drawH * imgAspect;
+
+        // Clamp so portrait doesn't overflow the canvas width
+        if (drawW > W * 0.85) {
+          drawW = W * 0.85;
+          drawH = drawW / imgAspect;
+        }
+
+        // Anchor bottom-right with a small inset
+        var drawX = W - drawW - W * 0.02;
+        var drawY = H - drawH;
+
+        // ---- Responsive dot spacing ----
+        // The number of sample rows across the portrait stays constant so the
+        // halftone "resolution" looks identical on a 4K monitor and a laptop.
+        var dotSpacing = drawH / DOTS_PER_PORTRAIT;
+        var maxR = dotSpacing * MAX_R_RATIO;
+
+        // ---- Sample image pixels ----
+        var off = document.createElement('canvas');
+        off.width = W; off.height = H;
+        var offCtx = off.getContext('2d');
+        offCtx.fillStyle = '#ffffff';
+        offCtx.fillRect(0, 0, W, H);
+        offCtx.drawImage(img, drawX, drawY, drawW, drawH);
+
+        var imgData;
+        try {
+          imgData = offCtx.getImageData(0, 0, W, H).data;
+        } catch (e) {
+          return;
+        }
+
+        // ---- Build dot array ----
+        dots = [];
+        var halfSpacing = dotSpacing / 2;
+        for (var y = halfSpacing; y < H; y += dotSpacing) {
+          for (var x = halfSpacing; x < W; x += dotSpacing) {
+            var sx = Math.min(Math.round(x), W - 1);
+            var sy = Math.min(Math.round(y), H - 1);
+            var idx = (sy * W + sx) * 4;
+            var r = imgData[idx], g = imgData[idx + 1], b = imgData[idx + 2];
+            var brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            if (brightness > BRIGHT_CUT) continue;
+            var darkness = 1 - brightness;
+            var dotR = darkness * maxR;
+            if (dotR < MIN_R) continue;
+            dots.push({ x: x, y: y, baseR: dotR, r: dotR });
+          }
+        }
+
+        if (skipAnim) { render(); } else { startAnim(); }
+      }
+
+      var animFrame = null;
+
+      function startAnim() {
+        var STAGGER = 2200;  // ms window over which all dots are delayed
+        var DOT_DUR = 1100;  // ms for each individual dot to travel and settle
+
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          d.delay  = Math.random() * STAGGER;
+          d.startX = Math.random() * W;
+          d.startY = Math.random() * H;
+        }
+
+        if (animFrame) cancelAnimationFrame(animFrame);
+        var t0 = performance.now();
+
+        function tick(ts) {
+          var elapsed = ts - t0;
+          ctx.clearRect(0, 0, W, H);
+          ctx.fillStyle = DOT_COLOR;
+          ctx.beginPath();
+          var allDone = true;
+          for (var i = 0; i < dots.length; i++) {
+            var d = dots[i];
+            var p = Math.max(0, Math.min(1, (elapsed - d.delay) / DOT_DUR));
+            if (p < 1) allDone = false;
+            var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+            var r  = d.baseR * e;
+            var px = d.startX + (d.x - d.startX) * e;
+            var py = d.startY + (d.y - d.startY) * e;
+            if (r < 0.1) continue;
+            ctx.moveTo(px + r, py);
+            ctx.arc(px, py, r, 0, 6.2832);
+          }
+          ctx.fill();
+          if (!allDone) animFrame = requestAnimationFrame(tick);
+        }
+        animFrame = requestAnimationFrame(tick);
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = DOT_COLOR;
+        ctx.beginPath();
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          if (d.baseR < 0.1) continue;
+          ctx.moveTo(d.x + d.baseR, d.y);
+          ctx.arc(d.x, d.y, d.baseR, 0, 6.2832);
+        }
+        ctx.fill();
+      }
+
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+          buildAndRender(true);
+        }, 200);
+      });
+    })();
   </script>
 
 </body>
