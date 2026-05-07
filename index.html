@@ -68,6 +68,23 @@
 
 
     /* ==============================================
+       GRID OVERLAY
+    ============================================== */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-columns: var(--page-left) repeat(5, 1fr);
+      column-gap: var(--gap);
+      pointer-events: none;
+      z-index: 9000;
+    }
+
+    .grid-overlay > span {
+      border-right: 1px solid rgba(var(--c-dark-rgb), 0.055);
+    }
+
+    /* ==============================================
        HERO
     ============================================== */
     .hero {
@@ -386,6 +403,9 @@
   </style>
 </head>
 <body>
+  <div class="grid-overlay" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
 
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
