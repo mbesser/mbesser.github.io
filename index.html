@@ -64,66 +64,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ==============================================
-       NAVIGATION
-    ============================================== */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      padding: 1.25rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.5s var(--ease), backdrop-filter 0.5s var(--ease),
-                  box-shadow 0.5s var(--ease);
-    }
-
-    .nav.is-scrolled {
-      background: rgba(var(--c-dark-rgb), 0.94);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .nav__brand {
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--c-white);
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-    }
-
-    .nav.is-scrolled .nav__brand {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav__menu {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav__menu a {
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      transition: color 0.2s;
-    }
-
-    .nav__menu a:hover { color: var(--c-gold); }
-
-    @media (max-width: 580px) {
-      .nav__menu { display: none; }
-    }
 
     /* ==============================================
        HERO
@@ -238,7 +178,7 @@
 
       .hero__content {
         justify-content: flex-start;
-        padding-top: 6rem;
+        padding-top: 3rem;
         padding-bottom: 0;
       }
     }
@@ -315,7 +255,6 @@
       flex-direction: column;
       gap: 0.75rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(var(--c-dark-rgb), 0.12);
     }
 
     .about__meta-row {
@@ -521,15 +460,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav" aria-label="Site navigation">
-    <span class="nav__brand" aria-hidden="true">Matti Besser</span>
-    <ul class="nav__menu" role="list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
@@ -573,10 +503,10 @@
 
         <div class="about__body">
           <p class="reveal">
-            I make complex digital products feel simple. Fifteen years in — across health tech, greentech, and now financial services — the work that interests me most sits at the intersection of real user need and genuine business complexity.
+            What I love is taking genuinely complex domains and making them feel appropriately simple. Not stripped down. Just navigable. Users should be able to do what they came to do, and the business goals should still hold. Getting both right at the same time is where the interesting work lives.
           </p>
           <p class="reveal reveal--d1">
-            Currently at <strong>Liechtenstein Life Prosperity</strong>, designing insurance and pension products for policyholders across Europe. Previously at <strong>XEMPUS</strong>, <strong>Temedica</strong>, and <strong>Energie Zukunft Schweiz</strong>.
+            Right now I'm at <strong>Liechtenstein Life Prosperity</strong>, designing products for policyholders and brokers in private pension and life insurance. Before that, occupational pension at <strong>XEMPUS</strong>, health tech at <strong>Temedica</strong>, and sustainability platforms at <strong>Energie Zukunft Schweiz</strong>.
           </p>
         </div>
 
@@ -610,21 +540,6 @@
   </footer>
 
   <script>
-    // Sticky nav
-    const nav = document.getElementById('nav');
-    let ticking = false;
-
-    function updateNav() {
-      nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight * 0.45);
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateNav);
-        ticking = true;
-      }
-    }, { passive: true });
 
     // Scroll reveal
     const observer = new IntersectionObserver(entries => {
