@@ -176,48 +176,36 @@
       padding-bottom: var(--space-lg);
     }
 
-    .hero__eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      color: var(--c-accent-muted, #4a6a4a);
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s 0.2s var(--ease) forwards;
-    }
-
-    .hero__eyebrow-line {
-      display: block;
-      width: 2rem;
-      height: 1px;
-      background: var(--c-accent-muted, #4a6a4a);
-      flex-shrink: 0;
-    }
-
     .hero__name {
-      font-size: clamp(3.25rem, 10vw, 9rem);
+      font-size: clamp(3.5rem, 10vw, 8rem);
       font-weight: 900;
       line-height: 0.92;
       color: var(--c-accent, #2d3e2c);
-      letter-spacing: -0.025em;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      animation: fadeSlideUp 0.9s 0.2s var(--ease) forwards;
+    }
+
+    .hero__role {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--c-accent-muted, #4a6a4a);
       margin-bottom: 2rem;
       opacity: 0;
-      animation: fadeSlideUp 0.9s 0.35s var(--ease) forwards;
+      animation: fadeSlideUp 0.8s 0.4s var(--ease) forwards;
     }
 
     .hero__tagline {
-      font-size: clamp(1.0625rem, 2.2vw, 1.375rem);
+      font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
       font-weight: 300;
       font-style: italic;
       color: var(--c-accent-faint, rgba(45, 62, 44, 0.55));
-      max-width: 34ch;
-      line-height: 1.55;
+      max-width: 36ch;
+      line-height: 1.6;
       opacity: 0;
-      animation: fadeSlideUp 0.9s 0.5s var(--ease) forwards;
+      animation: fadeSlideUp 0.9s 0.58s var(--ease) forwards;
     }
 
     .hero__scroll-hint {
@@ -773,11 +761,8 @@
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero__text-panel">
       <div class="hero__content">
-        <span class="hero__eyebrow">
-          <span class="hero__eyebrow-line" aria-hidden="true"></span>
-          UX &amp; Product Design
-        </span>
         <h1 class="hero__name">Matti<br>Besser.</h1>
+        <p class="hero__role">UX &amp; Product Designer</p>
         <p class="hero__tagline">Making complex financial products feel&nbsp;simple — for the people who depend on&nbsp;them.</p>
       </div>
       <div class="hero__scroll-hint" aria-hidden="true">
