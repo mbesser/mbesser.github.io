@@ -81,7 +81,7 @@
     }
 
     .grid-overlay > span {
-      border-right: 1px solid rgba(var(--c-dark-rgb), 0.055);
+      border-left: 1px solid rgba(var(--c-dark-rgb), 0.055);
     }
 
     /* ==============================================
@@ -119,9 +119,17 @@
       pointer-events: none;
     }
 
+    /* ---- col-3 anchor: zero-size grid item used by JS to find col-3 start ---- */
+    .hero__col3-anchor {
+      grid-column: 3;
+      grid-row: 1;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
     /* ---- text panel ---- */
     .hero__text-panel {
-      grid-column: 2;
+      grid-column: 2 / 4;
       position: relative;
       z-index: 2;
       display: grid;
@@ -225,7 +233,7 @@
 
     .container {
       max-width: 800px;
-      margin-left: var(--page-left);
+      margin-left: calc(var(--page-left) + var(--gap));
       margin-right: 2rem;
     }
 
@@ -333,7 +341,6 @@
        FOOTER
     ============================================== */
     .footer {
-      border-top: 1px solid rgba(var(--c-dark-rgb), 0.08);
       padding: 1.5rem 0;
     }
 
@@ -410,6 +417,7 @@
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero__col3-anchor" aria-hidden="true"></div>
     <div class="hero__text-panel">
       <div class="hero__content">
         <h1 class="hero__name">Matti<br>Besser.</h1>
@@ -688,10 +696,9 @@
         if (!W || !H) return false;
         canvas.width = W; canvas.height = H;
 
-        // Portrait occupies the space right of the text panel (cols 3–5 in the grid)
-        var textPanel = canvas.parentElement.querySelector('.hero__text-panel');
-        var panelRight = textPanel ? textPanel.getBoundingClientRect().right : W * 0.3;
-        var portraitLeft = panelRight + 16;
+        // Portrait starts at col 3 left edge (cols 3–6), overlapping the text in col 3
+        var col3Anchor = canvas.parentElement.querySelector('.hero__col3-anchor');
+        var portraitLeft = col3Anchor ? col3Anchor.getBoundingClientRect().left : W * 0.3;
 
         var portraitScale = W < 600 ? 0.62 : W < 1024 ? 0.70 : 0.80;
         var imgAspect = img.width / img.height;
