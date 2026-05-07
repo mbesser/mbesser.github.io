@@ -241,7 +241,7 @@
       animation: tickExtend 2.4s 1.5s ease-in-out infinite;
     }
 
-    @media (max-width: 599px) {
+    @media (max-width: 1023px) {
       .hero::before {
         background:
           linear-gradient(to bottom, var(--c-hero-bg-88, rgba(228,224,215,0.88)) 0%, var(--c-hero-bg-50, rgba(228,224,215,0.5)) 45%, transparent 70%),
@@ -1182,7 +1182,7 @@
         if (!imgLoaded || !colorLoaded) return;
 
         // ---- Position the portrait: bottom-right, scaled by viewport ----
-        var portraitScale = W < 600 ? 0.62 : 0.80;
+        var portraitScale = W < 600 ? 0.62 : W < 1024 ? 0.70 : 0.80;
         var imgAspect = img.width / img.height;
         var drawH = H * portraitScale;
         var drawW = drawH * imgAspect;
