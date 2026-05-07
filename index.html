@@ -35,6 +35,7 @@
 
       --radius: 3px;
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --page-left: max(3rem, calc(100vw / 6));
     }
 
     /* ==============================================
@@ -105,8 +106,8 @@
       grid-template-rows: 1fr auto;
       min-height: 100svh;
       min-height: 100vh;
-      padding: 2rem;
-      max-width: 680px;
+      padding: 2rem 2rem 2rem var(--page-left);
+      max-width: calc(800px + var(--page-left));
     }
 
     .hero__content {
@@ -142,7 +143,7 @@
       font-weight: 300;
       font-style: italic;
       color: var(--c-accent-faint, rgba(45, 62, 44, 0.55));
-      max-width: 36ch;
+      max-width: 65ch;
       line-height: 1.6;
       opacity: 0;
       animation: fadeSlideUp 0.9s 0.58s var(--ease) forwards;
@@ -187,7 +188,7 @@
        SECTION SHARED
     ============================================== */
     .section {
-      padding: var(--space-xl) 2rem;
+      padding: var(--space-xl) 0;
     }
 
     .section--alt {
@@ -195,8 +196,9 @@
     }
 
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 800px;
+      margin-left: var(--page-left);
+      margin-right: 2rem;
     }
 
     .section-kicker {
@@ -233,17 +235,9 @@
        ABOUT
     ============================================== */
     .about__layout {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: var(--space-lg);
-      align-items: start;
-    }
-
-    @media (min-width: 768px) {
-      .about__layout {
-        grid-template-columns: 1.15fr 1fr;
-        gap: 6rem;
-      }
     }
 
     .about__heading {
@@ -283,14 +277,14 @@
     .about__body p {
       font-size: 1.0375rem;
       line-height: 1.8;
+      max-width: 65ch;
     }
 
     /* ==============================================
        CONTACT
     ============================================== */
     .contact {
-      padding: var(--space-xl) 2rem;
-      text-align: center;
+      padding: var(--space-xl) 0;
     }
 
     .contact__links {
@@ -312,11 +306,14 @@
        FOOTER
     ============================================== */
     .footer {
-      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(var(--c-dark-rgb), 0.08);
+      padding: 1.5rem 0;
+    }
+
+    .footer__inner {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      border-top: 1px solid rgba(var(--c-dark-rgb), 0.08);
     }
 
     .footer a {
@@ -404,7 +401,7 @@
 
         <div>
           <h2 class="heading-large about__heading reveal" id="about-heading">
-            Designing digital products<br><strong>since 2010.</strong>
+            Designing digital products <strong>since 2010.</strong>
           </h2>
           <div class="about__meta reveal reveal--d1">
             <div class="about__meta-row">
@@ -437,16 +434,20 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact" aria-label="Elsewhere">
-    <div class="contact__links">
-      <a href="https://www.linkedin.com/in/matti-besser/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/mbesser" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <div class="container">
+      <div class="contact__links">
+        <a href="https://www.linkedin.com/in/matti-besser/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/mbesser" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <a href="mailto:hello@mattibesser.com">hello@mattibesser.com</a>
-    <a href="/legal">Legal</a>
+    <div class="container footer__inner">
+      <a href="mailto:hello@mattibesser.com">hello@mattibesser.com</a>
+      <a href="/legal">Legal</a>
+    </div>
   </footer>
 
   <script>
