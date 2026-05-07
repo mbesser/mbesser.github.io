@@ -631,67 +631,52 @@
           applyScheme(colors);
           document.body.style.opacity = '1';
           colorLoaded = true;
-          if (imgLoaded) buildAndRender();
+          awaitTrigger();
         })
         .catch(function () {
           document.body.style.opacity = '1';
           colorLoaded = true;
-          if (imgLoaded) buildAndRender();
+          awaitTrigger();
         });
 
       img.onload = function () {
         imgLoaded = true;
-        if (colorLoaded) buildAndRender();
+        awaitTrigger();
       };
       img.src = 'img/portrait-halftone.png';
 
-      function buildAndRender(skipAnim) {
+      var buildTimer   = null;
+      var previewFrame = null;
+      var previewPts   = [];
+      var previewSet   = {};
+      var triggered    = false;
+
+      function sampleAndBuild() {
         var rect = canvas.parentElement.getBoundingClientRect();
         W = rect.width  || window.innerWidth;
         H = rect.height || window.innerHeight;
-        if (!W || !H) return;
+        if (!W || !H) return false;
         canvas.width = W; canvas.height = H;
 
-        if (!imgLoaded || !colorLoaded) return;
-
-        // ---- Position the portrait: bottom-right, scaled by viewport ----
         var portraitScale = W < 600 ? 0.62 : W < 1024 ? 0.70 : 0.80;
         var imgAspect = img.width / img.height;
         var drawH = H * portraitScale;
         var drawW = drawH * imgAspect;
-
-        // Clamp so portrait doesn't overflow the canvas width
-        if (drawW > W * 0.85) {
-          drawW = W * 0.85;
-          drawH = drawW / imgAspect;
-        }
-
-        // Anchor bottom-right with a small inset
+        if (drawW > W * 0.85) { drawW = W * 0.85; drawH = drawW / imgAspect; }
         var drawX = W - drawW - W * 0.02;
         var drawY = H - drawH;
-
-        // ---- Responsive dot spacing ----
-        // The number of sample rows across the portrait stays constant so the
-        // halftone "resolution" looks identical on a 4K monitor and a laptop.
         var dotSpacing = drawH / DOTS_PER_PORTRAIT;
         var maxR = dotSpacing * MAX_R_RATIO;
 
-        // ---- Sample image pixels ----
         var off = document.createElement('canvas');
         off.width = W; off.height = H;
         var offCtx = off.getContext('2d');
         offCtx.fillStyle = '#ffffff';
         offCtx.fillRect(0, 0, W, H);
         offCtx.drawImage(img, drawX, drawY, drawW, drawH);
-
         var imgData;
-        try {
-          imgData = offCtx.getImageData(0, 0, W, H).data;
-        } catch (e) {
-          return;
-        }
+        try { imgData = offCtx.getImageData(0, 0, W, H).data; } catch(e) { return false; }
 
-        // ---- Build dot array ----
         dots = [];
         var halfSpacing = dotSpacing / 2;
         for (var y = halfSpacing; y < H; y += dotSpacing) {
@@ -699,57 +684,131 @@
             var sx = Math.min(Math.round(x), W - 1);
             var sy = Math.min(Math.round(y), H - 1);
             var idx = (sy * W + sx) * 4;
-            var r = imgData[idx], g = imgData[idx + 1], b = imgData[idx + 2];
-            var brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            var r = imgData[idx], g = imgData[idx+1], b = imgData[idx+2];
+            var brightness = (0.299*r + 0.587*g + 0.114*b) / 255;
             if (brightness > BRIGHT_CUT) continue;
-            var darkness = 1 - brightness;
-            var dotR = darkness * maxR;
+            var dotR = (1 - brightness) * maxR;
             if (dotR < MIN_R) continue;
             dots.push({ x: x, y: y, baseR: dotR, r: dotR });
           }
         }
-
-        if (skipAnim) { render(); } else { startAnim(); }
+        return true;
       }
 
-      var animFrame = null;
+      // One continuous loop: preview dots drift near their targets, then on
+      // trigger they settle while the rest of the portrait flies in.
+      function startPreview() {
+        triggered = false;
+        previewSet = {};
+        previewPts = [];
 
-      function startAnim() {
-        var STAGGER = 2200;  // ms window over which all dots are delayed
-        var DOT_DUR = 1100;  // ms for each individual dot to travel and settle
-
-        for (var i = 0; i < dots.length; i++) {
+        var PREVIEW_COUNT = 50;
+        var step = Math.max(1, Math.floor(dots.length / PREVIEW_COUNT));
+        for (var i = 0; i < dots.length && previewPts.length < PREVIEW_COUNT; i += step) {
           var d = dots[i];
-          d.delay  = Math.random() * STAGGER;
-          d.startX = Math.random() * W;
-          d.startY = Math.random() * H;
+          d.pvx   = d.x + (Math.random() - 0.5) * 30;
+          d.pvy   = d.y + (Math.random() - 0.5) * 30;
+          d.vx    = (Math.random() - 0.5) * 0.2;
+          d.vy    = (Math.random() - 0.5) * 0.2;
+          d.freq  = 0.012 + Math.random() * 0.01;
+          d.phase = Math.random() * 6.2832;
+          d.amp   = 0.25 + Math.random() * 0.4;
+          previewSet[i] = true;
+          previewPts.push(d);
+        }
+        for (var i = 0; i < dots.length; i++) {
+          if (!previewSet[i]) {
+            dots[i].delay  = 400 + Math.random() * 2200;
+            dots[i].startX = Math.random() * W;
+            dots[i].startY = Math.random() * H;
+          }
         }
 
-        if (animFrame) cancelAnimationFrame(animFrame);
-        var t0 = performance.now();
+        var SETTLE_DUR = 700;
+        var DOT_DUR    = 1100;
+        var triggerTs  = null;
+        var tick = 0;
 
-        function tick(ts) {
-          var elapsed = ts - t0;
+        function loop(ts) {
+          tick++;
           ctx.clearRect(0, 0, W, H);
           ctx.fillStyle = DOT_COLOR;
           ctx.beginPath();
-          var allDone = true;
-          for (var i = 0; i < dots.length; i++) {
-            var d = dots[i];
-            var p = Math.max(0, Math.min(1, (elapsed - d.delay) / DOT_DUR));
-            if (p < 1) allDone = false;
-            var e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-            var r  = d.baseR * e;
-            var px = d.startX + (d.x - d.startX) * e;
-            var py = d.startY + (d.y - d.startY) * e;
-            if (r < 0.1) continue;
-            ctx.moveTo(px + r, py);
-            ctx.arc(px, py, r, 0, 6.2832);
+
+          if (!triggered) {
+            ctx.globalAlpha = 0.55;
+            for (var j = 0; j < previewPts.length; j++) {
+              var p = previewPts[j];
+              p.vx  += (p.x - p.pvx) * 0.002;
+              p.vy  += (p.y - p.pvy) * 0.002;
+              p.pvx += p.vx + Math.sin(tick * p.freq + p.phase) * p.amp;
+              p.pvy += p.vy + Math.cos(tick * p.freq + p.phase + 1) * p.amp;
+              var r = Math.max(2, p.baseR);
+              ctx.moveTo(p.pvx + r, p.pvy);
+              ctx.arc(p.pvx, p.pvy, r, 0, 6.2832);
+            }
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            previewFrame = requestAnimationFrame(loop);
+
+          } else {
+            if (!triggerTs) {
+              triggerTs = ts;
+              for (var j = 0; j < previewPts.length; j++) {
+                previewPts[j].startX = previewPts[j].pvx;
+                previewPts[j].startY = previewPts[j].pvy;
+              }
+            }
+            var elapsed = ts - triggerTs;
+            var allDone = true;
+
+            for (var i = 0; i < dots.length; i++) {
+              var d = dots[i];
+              var r, px, py;
+
+              if (previewSet[i]) {
+                var prog = Math.min(1, elapsed / SETTLE_DUR);
+                if (prog < 1) allDone = false;
+                var e = 1 - Math.pow(1 - prog, 3);
+                px = d.startX + (d.x - d.startX) * e;
+                py = d.startY + (d.y - d.startY) * e;
+                var startR = Math.max(2, d.baseR);
+                r = startR + (d.baseR - startR) * e;
+              } else {
+                if (elapsed < d.delay) { allDone = false; continue; }
+                var prog = Math.min(1, (elapsed - d.delay) / DOT_DUR);
+                if (prog < 1) allDone = false;
+                var e = prog < 0.5 ? 4*prog*prog*prog : 1 - Math.pow(-2*prog+2, 3)/2;
+                r  = d.baseR * e;
+                px = d.startX + (d.x - d.startX) * e;
+                py = d.startY + (d.y - d.startY) * e;
+              }
+
+              if (r < 0.1) continue;
+              ctx.moveTo(px + r, py);
+              ctx.arc(px, py, r, 0, 6.2832);
+            }
+            ctx.fill();
+            if (!allDone) previewFrame = requestAnimationFrame(loop);
           }
-          ctx.fill();
-          if (!allDone) animFrame = requestAnimationFrame(tick);
         }
-        animFrame = requestAnimationFrame(tick);
+
+        if (previewFrame) cancelAnimationFrame(previewFrame);
+        previewFrame = requestAnimationFrame(loop);
+      }
+
+      function triggerBuild() {
+        triggered = true;
+        clearTimeout(buildTimer);
+        window.removeEventListener('scroll', triggerBuild);
+      }
+
+      function awaitTrigger() {
+        if (!imgLoaded || !colorLoaded) return;
+        if (!sampleAndBuild()) return;
+        startPreview();
+        buildTimer = setTimeout(triggerBuild, 5000);
+        window.addEventListener('scroll', triggerBuild, { passive: true, once: true });
       }
 
       function render() {
@@ -768,8 +827,10 @@
       window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
-          if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
-          buildAndRender(true);
+          if (previewFrame) { cancelAnimationFrame(previewFrame); previewFrame = null; }
+          triggered = false;
+          if (!imgLoaded || !colorLoaded) return;
+          if (sampleAndBuild()) render();
         }, 200);
       });
     })();
