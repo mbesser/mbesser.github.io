@@ -4,44 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Legal — Matti Besser</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --c-dark:       #152E3B;
+      --c-dark-rgb:   21, 46, 59;
+      --c-text:       #324656;
+      --c-text-muted: #5c7a8e;
+      --c-bg:         #FFFAF0;
+      --c-gold:       #F1BB52;
+      --font: 'Fira Sans', system-ui, -apple-system, sans-serif;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Fira Sans', system-ui, sans-serif;
+      font-family: var(--font);
       font-weight: 300;
       font-size: 1rem;
       line-height: 1.75;
-      color: #324656;
-      background: #FFFAF0;
+      color: var(--c-text);
+      background-color: var(--c-bg);
       padding: 4rem 2rem 6rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
     a { color: inherit; }
-    a:hover { opacity: 0.7; }
+    a:hover { color: var(--c-gold); }
 
     .back {
       display: inline-block;
       font-size: 0.8125rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #5c7a8e;
+      color: var(--c-text-muted);
       text-decoration: none;
       margin-bottom: 4rem;
-    }
-
-    .wrap {
-      max-width: 640px;
+      transition: color 0.2s;
     }
 
     h1 {
       font-size: 1.75rem;
       font-weight: 700;
-      color: #152E3B;
+      color: var(--c-dark);
       letter-spacing: -0.02em;
+      line-height: 1.2;
       margin-bottom: 3rem;
     }
 
@@ -50,86 +65,168 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #5c7a8e;
-      margin-top: 3rem;
-      margin-bottom: 0.75rem;
+      color: var(--c-text-muted);
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
     }
 
     p { margin-bottom: 1rem; }
 
-    .divider {
+    hr {
       border: none;
-      border-top: 1px solid rgba(50, 70, 86, 0.1);
-      margin: 3rem 0;
+      border-top: 1px solid rgba(var(--c-dark-rgb), 0.1);
+      margin: 3.5rem 0;
     }
 
     footer {
       margin-top: 5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(50, 70, 86, 0.08);
+      border-top: 1px solid rgba(var(--c-dark-rgb), 0.08);
       display: flex;
       gap: 2rem;
       font-size: 0.8125rem;
-      color: #5c7a8e;
+      color: var(--c-text-muted);
     }
   </style>
 </head>
 <body>
+
   <a class="back" href="/">← mattibesser.com</a>
 
-  <div class="wrap">
+  <h1>Legal</h1>
 
-    <h1>Legal</h1>
+  <h2>Angaben gemäß § 5 TMG</h2>
+  <p>
+    Matti Besser<br>
+    Rot-Kreuz-Str. 12A<br>
+    86179 Augsburg
+  </p>
 
-    <h2>Angaben gemäß § 5 TMG</h2>
-    <p>
-      Matti Besser<br>
-      Rot-Kreuz-Str. 12A<br>
-      86179 Augsburg
-    </p>
+  <h2>Kontakt</h2>
+  <p><a href="mailto:hello@mattibesser.com">hello@mattibesser.com</a></p>
 
-    <h2>Kontakt</h2>
-    <p><a href="mailto:hello@mattibesser.com">hello@mattibesser.com</a></p>
+  <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+  <p>
+    Matti Besser<br>
+    Rot-Kreuz-Str. 12A<br>
+    86179 Augsburg
+  </p>
 
-    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-    <p>
-      Matti Besser<br>
-      Rot-Kreuz-Str. 12A<br>
-      86179 Augsburg
-    </p>
+  <hr>
 
-    <hr class="divider">
+  <h1>Haftungsausschluss</h1>
 
-    <h1>Haftungsausschluss</h1>
+  <h2>Haftung für Inhalte</h2>
+  <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
 
-    <h2>Haftung für Inhalte</h2>
-    <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+  <h2>Haftung für Links</h2>
+  <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
 
-    <h2>Haftung für Links</h2>
-    <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+  <h2>Urheberrecht</h2>
+  <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
 
-    <h2>Urheberrecht</h2>
-    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+  <hr>
 
-    <hr class="divider">
+  <h1>Datenschutzerklärung</h1>
 
-    <h1>Datenschutzerklärung</h1>
+  <h2>Datenschutz</h2>
+  <p>Diese Website erhebt keine personenbezogenen Daten, setzt keine Cookies und verwendet keine Tracking-Dienste.</p>
 
-    <h2>Datenschutz</h2>
-    <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten ernst. Diese Website erhebt keine personenbezogenen Daten. Es werden keine Cookies gesetzt und keine Tracking-Dienste eingesetzt.</p>
+  <h2>Kontaktaufnahme per E-Mail</h2>
+  <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
 
-    <h2>Kontaktaufnahme per E-Mail</h2>
-    <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage und für Rückfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-
-    <h2>Widerspruch Werbe-Mails</h2>
-    <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen vor.</p>
-
-  </div>
+  <h2>Widerspruch Werbe-Mails</h2>
+  <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung wird hiermit widersprochen.</p>
 
   <footer>
     <a href="mailto:hello@mattibesser.com">hello@mattibesser.com</a>
     <span>Legal</span>
   </footer>
+
+  <script>
+    (function () {
+      function hslToRgb(h, s, l) {
+        h /= 360; s /= 100; l /= 100;
+        if (s === 0) return [Math.round(l*255), Math.round(l*255), Math.round(l*255)];
+        function f(p, q, t) {
+          if (t < 0) t += 1; if (t > 1) t -= 1;
+          if (t < 1/6) return p + (q-p)*6*t;
+          if (t < 1/2) return q;
+          if (t < 2/3) return p + (q-p)*(2/3-t)*6;
+          return p;
+        }
+        var q = l < 0.5 ? l*(1+s) : l+s-l*s, p = 2*l-q;
+        return [Math.round(f(p,q,h+1/3)*255), Math.round(f(p,q,h)*255), Math.round(f(p,q,h-1/3)*255)];
+      }
+
+      function toHex(r, g, b) {
+        return '#' + ((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+      }
+
+      function luminance(r, g, b) {
+        function s(c) { c/=255; return c<=0.04045 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4); }
+        return 0.2126*s(r) + 0.7152*s(g) + 0.0722*s(b);
+      }
+
+      function enforceContrast(bgLum, h, s, l, minRatio) {
+        var rgb = hslToRgb(h, s, l);
+        while (l > 8) {
+          var lum = luminance(rgb[0], rgb[1], rgb[2]);
+          var ratio = (Math.max(bgLum, lum)+0.05) / (Math.min(bgLum, lum)+0.05);
+          if (ratio >= minRatio) break;
+          l--; rgb = hslToRgb(h, s, l);
+        }
+        return { rgb: rgb, hex: toHex(rgb[0], rgb[1], rgb[2]) };
+      }
+
+      function applyScheme(colors) {
+        var hues = colors.map(function(c){ return c.h; });
+        hues.sort(function(a,b){ return a-b; });
+        var medianH = hues[Math.floor(hues.length/2)];
+
+        var analogic = [], complement = [];
+        for (var i = 0; i < colors.length; i++) {
+          var diff = Math.abs(colors[i].h - medianH);
+          if (diff > 180) diff = 360 - diff;
+          if (diff < 90) analogic.push(colors[i]); else complement.push(colors[i]);
+        }
+        if (analogic.length === 0) { analogic = colors.slice(0,4); complement = colors.slice(4); }
+        if (complement.length === 0) { complement = analogic.splice(-2,2); }
+
+        analogic.sort(function(a,b){ return luminance(a.r,a.g,a.b) - luminance(b.r,b.g,b.b); });
+        complement.sort(function(a,b){ return luminance(a.r,a.g,a.b) - luminance(b.r,b.g,b.b); });
+
+        var bgRgb = hslToRgb(analogic[0].h, 10, 89);
+        var bgHex = toHex(bgRgb[0], bgRgb[1], bgRgb[2]);
+        var bgLum = luminance(bgRgb[0], bgRgb[1], bgRgb[2]);
+
+        var pri = enforceContrast(bgLum, analogic[0].h, analogic[0].s, analogic[0].l, 4.5);
+        var pr = pri.rgb[0], pg = pri.rgb[1], pb = pri.rgb[2];
+
+        var accentSrc = complement[0] || analogic[0];
+        var accent = enforceContrast(bgLum, accentSrc.h, accentSrc.s, accentSrc.l, 3.0);
+
+        var root = document.documentElement.style;
+        root.setProperty('--c-dark',       pri.hex);
+        root.setProperty('--c-dark-rgb',   pr+','+pg+','+pb);
+        root.setProperty('--c-text',       'rgba('+pr+','+pg+','+pb+',0.82)');
+        root.setProperty('--c-text-muted', 'rgba('+pr+','+pg+','+pb+',0.52)');
+        root.setProperty('--c-bg',         bgHex);
+        root.setProperty('--c-gold',       accent.hex);
+      }
+
+      var seedHue = Math.floor(Math.random() * 360);
+      fetch('https://www.thecolorapi.com/scheme?hsl=' + seedHue + ',55,32&mode=analogic-complement&count=6&format=json')
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+          applyScheme(data.colors.map(function(c){
+            return { hex: c.hex.value, r: c.rgb.r, g: c.rgb.g, b: c.rgb.b, h: c.hsl.h, s: c.hsl.s, l: c.hsl.l };
+          }));
+          document.body.style.opacity = '1';
+        })
+        .catch(function(){ document.body.style.opacity = '1'; });
+    })();
+  </script>
 
 </body>
 </html>
