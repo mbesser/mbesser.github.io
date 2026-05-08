@@ -1201,5 +1201,24 @@
     })();
   </script>
 
+
+  <script data-goatcounter="https://mbesser.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <script>
+    (function () {
+      var t0 = Date.now();
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) return;
+        var secs   = Math.round((Date.now() - t0) / 1000);
+        var bucket = secs < 15  ? '<15s'
+                   : secs < 30  ? '15-30s'
+                   : secs < 60  ? '30-60s'
+                   : secs < 180 ? '1-3min'
+                   : secs < 600 ? '3-10min'
+                   :               '10min+';
+        if (window.goatcounter) window.goatcounter.count({ path: 'time/' + bucket, event: true });
+      });
+    })();
+  </script>
 </body>
 </html>
