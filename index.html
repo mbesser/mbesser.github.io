@@ -126,6 +126,36 @@
 
     a { color: inherit; text-decoration: none; }
 
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 9999;
+      padding: 0.5rem 1rem;
+      background: var(--c-bg);
+      color: var(--c-dark);
+      font-size: 0.875rem;
+      font-weight: 400;
+      border: 1px solid var(--c-dark);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    a:focus-visible {
+      outline: 2px solid var(--c-accent, #2d3e2c);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .about__body a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+    .about__body a:hover { text-decoration-thickness: 2px; }
+
 
     /* ==============================================
        GRID OVERLAY
@@ -546,7 +576,10 @@
     }
   </style>
 </head>
+<noscript><style>body { opacity: 1 !important; }</style></noscript>
 <body>
+  <a href="#about" class="skip-link">Skip to content</a>
+
   <div class="grid-overlay" aria-hidden="true">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
@@ -598,7 +631,7 @@
             I like the challenge of working in complex domains and finding solutions that feel appropriately simple. Not simplified for its own sake, but clear enough that users can do what they need to do, and the business goals still hold.
           </p>
           <p class="reveal reveal--d1">
-            Right now I'm at <a href="https://liechtensteinlife.com" target="_blank" rel="noopener noreferrer"><strong>Liechtenstein Life Prosperity</strong></a>, designing products for policyholders and brokers in private pension and life insurance. Before that, occupational pension at <a href="https://www.xempus.com" target="_blank" rel="noopener noreferrer"><strong>XEMPUS</strong></a> and health tech at <a href="https://temedica.com" target="_blank" rel="noopener noreferrer"><strong>Temedica</strong></a>. And before those, self-employed working for various clients.
+            Right now I'm at <a href="https://liechtensteinlife.com" target="_blank" rel="noopener noreferrer" aria-label="Liechtenstein Life Prosperity (opens in new tab)"><strong>Liechtenstein Life Prosperity</strong></a>, designing products for policyholders and brokers in private pension and life insurance. Before that, occupational pension at <a href="https://www.xempus.com" target="_blank" rel="noopener noreferrer" aria-label="XEMPUS (opens in new tab)"><strong>XEMPUS</strong></a> and health tech at <a href="https://temedica.com" target="_blank" rel="noopener noreferrer" aria-label="Temedica (opens in new tab)"><strong>Temedica</strong></a>. And before those, self-employed working for various clients.
           </p>
         </div>
 
@@ -610,8 +643,8 @@
   <section class="contact" id="contact" aria-label="Elsewhere">
     <div class="container">
       <div class="contact__links">
-        <a href="https://www.linkedin.com/in/matti-besser/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/mbesser" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/matti-besser/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
+        <a href="https://github.com/mbesser" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">GitHub</a>
       </div>
     </div>
   </section>
@@ -1062,6 +1095,10 @@
       function awaitTrigger() {
         if (!imgLoaded || !colorLoaded) return;
         if (!sampleAndBuild()) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          render();
+          return;
+        }
         startPreview();
         buildTimer = setTimeout(triggerBuild, 5000);
         window.addEventListener('scroll', triggerBuild, { passive: true, once: true });
@@ -1099,6 +1136,7 @@
       if (!el || !wrap) return;
 
       function start() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         for (var i = verbs.length - 1; i > 0; i--) {
           var j = Math.floor(Math.random() * (i + 1));
           var tmp = verbs[i]; verbs[i] = verbs[j]; verbs[j] = tmp;
