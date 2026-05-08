@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>(function(){try{var m=localStorage.getItem('color-mode');if(m)document.documentElement.setAttribute('data-theme',m);}catch(e){}})()</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,65 @@
     }
 
     /* ==============================================
+       DARK MODE BASELINE
+    ============================================== */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --c-bg:          #12191f;
+        --c-dark:        #c8dde8;
+        --c-dark-rgb:    200, 221, 232;
+        --c-text:        rgba(200,221,232,0.82);
+        --c-text-muted:  rgba(200,221,232,0.52);
+        --c-gold:        #e8c97a;
+        --c-gold-rgb:    232, 201, 122;
+        --c-gold-mid:    #1e1a10;
+        --c-accent:      #c8dde8;
+        --c-accent-muted: rgba(200,221,232,0.62);
+        --c-accent-faint: rgba(200,221,232,0.40);
+        --c-hero-bg:     #12191f;
+        --c-hero-bg-88:  rgba(18,25,31,0.88);
+        --c-hero-bg-50:  rgba(18,25,31,0.50);
+        --c-hero-bg-70:  rgba(18,25,31,0.70);
+      }
+    }
+
+    [data-theme="dark"] {
+      --c-bg:          #12191f;
+      --c-dark:        #c8dde8;
+      --c-dark-rgb:    200, 221, 232;
+      --c-text:        rgba(200,221,232,0.82);
+      --c-text-muted:  rgba(200,221,232,0.52);
+      --c-gold:        #e8c97a;
+      --c-gold-rgb:    232, 201, 122;
+      --c-gold-mid:    #1e1a10;
+      --c-accent:      #c8dde8;
+      --c-accent-muted: rgba(200,221,232,0.62);
+      --c-accent-faint: rgba(200,221,232,0.40);
+      --c-hero-bg:     #12191f;
+      --c-hero-bg-88:  rgba(18,25,31,0.88);
+      --c-hero-bg-50:  rgba(18,25,31,0.50);
+      --c-hero-bg-70:  rgba(18,25,31,0.70);
+    }
+
+    [data-theme="light"] {
+      --c-bg:         #FFFAF0;
+      --c-dark:       #152E3B;
+      --c-dark-rgb:   21, 46, 59;
+      --c-text:       #324656;
+      --c-text-muted: #5c7a8e;
+      --c-gold:       #F1BB52;
+      --c-gold-rgb:   241, 187, 82;
+      --c-gold-mid:   #FDE6B7;
+      --c-accent:     #2d3e2c;
+      --c-accent-muted: rgba(74,106,74,0.62);
+      --c-accent-faint: rgba(74,106,74,0.40);
+      --c-hero-bg:    #e4e0d7;
+      --c-hero-bg-88: rgba(228,224,215,0.88);
+      --c-hero-bg-50: rgba(228,224,215,0.50);
+      --c-hero-bg-70: rgba(228,224,215,0.70);
+    }
+
+    /* ==============================================
        RESET
     ============================================== */
     *, *::before, *::after {
@@ -61,7 +121,7 @@
       line-height: 1.65;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: background-color 0.35s var(--ease), color 0.35s var(--ease), opacity 0.5s ease;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -117,6 +177,7 @@
       height: 100%;
       display: block;
       pointer-events: none;
+      transition: none;
     }
 
     /* ---- col-3 anchor: zero-size grid item used by JS to find col-3 start ---- */
@@ -195,6 +256,52 @@
       animation: tickExtend 2.4s 1.5s ease-in-out infinite;
     }
 
+    #theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 9100;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: rgba(var(--c-dark-rgb), 0.05);
+      border: 1px solid rgba(var(--c-dark-rgb), 0.12);
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-accent-faint);
+      transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.1s var(--ease);
+      opacity: 0;
+      animation: fadeIn 1s 1.3s var(--ease) forwards;
+    }
+
+    #theme-toggle:hover {
+      background: rgba(var(--c-dark-rgb), 0.10);
+      border-color: rgba(var(--c-dark-rgb), 0.20);
+      color: var(--c-accent-muted);
+    }
+
+    #theme-toggle:active { transform: scale(0.88); }
+
+    #theme-toggle:focus-visible {
+      outline: 2px solid var(--c-accent-muted);
+      outline-offset: 3px;
+    }
+
+    /* Show moon in light mode (→ switch to dark), sun in dark mode (→ switch to light) */
+    .theme-toggle__sun  { display: none; }
+    .theme-toggle__moon { display: block; }
+
+    [data-theme="dark"] .theme-toggle__sun  { display: block; }
+    [data-theme="dark"] .theme-toggle__moon { display: none; }
+
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme="light"]) .theme-toggle__sun  { display: block; }
+      html:not([data-theme="light"]) .theme-toggle__moon { display: none; }
+    }
+
     .hero__verb-wrap {
       display: inline-flex;
       align-items: center;
@@ -258,6 +365,7 @@
 
     .section--alt {
       background-color: var(--c-gold-mid);
+      transition: background-color 0.35s var(--ease);
     }
 
     .container {
@@ -443,6 +551,11 @@
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
 
+  <button id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/></svg>
+  </button>
+
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
@@ -601,11 +714,31 @@
         return { rgb: rgb, hex: toHex(rgb[0], rgb[1], rgb[2]), l: l };
       }
 
-      function applyScheme(colors) {
-        // colors = [{ hex, r, g, b, h, s, l, name }, ...] from the API
-        // The analogic-complement scheme returns analogic neighbours AND
-        // a complement pair. We separate them by hue distance from the
-        // median hue to identify which are analogic vs complement.
+      function enforceContrastLight(bgLum, h, s, l, minRatio) {
+        var rgb = hslToRgb(h, s, l);
+        while (contrastVsBg(bgLum, rgb[0], rgb[1], rgb[2]) < minRatio && l < 96) {
+          l++;
+          rgb = hslToRgb(h, s, l);
+        }
+        return { rgb: rgb, hex: toHex(rgb[0], rgb[1], rgb[2]), l: l };
+      }
+
+      // ---- Mode state ----
+      var sessionColors = null;
+      var currentMode   = null;
+
+      function systemPrefersDark() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      function storedMode() {
+        try { return localStorage.getItem('color-mode'); } catch(e) { return null; }
+      }
+      function currentIsDark() {
+        var s = storedMode();
+        return s === 'dark' ? true : s === 'light' ? false : systemPrefersDark();
+      }
+
+      function applyScheme(colors, isDark) {
         var hues = colors.map(function (c) { return c.h; });
         hues.sort(function (a, b) { return a - b; });
         var medianH = hues[Math.floor(hues.length / 2)];
@@ -617,57 +750,51 @@
           if (diff < 90) analogic.push(colors[i]);
           else complement.push(colors[i]);
         }
-        // Fallback: if separation failed, split first 4 / last 2
         if (analogic.length === 0) { analogic = colors.slice(0, 4); complement = colors.slice(4); }
         if (complement.length === 0) { complement = analogic.splice(-2, 2); }
 
-        // Sort each group by luminance (darkest first)
         analogic.sort(function (a, b) { return luminance(a.r, a.g, a.b) - luminance(b.r, b.g, b.b); });
         complement.sort(function (a, b) { return luminance(a.r, a.g, a.b) - luminance(b.r, b.g, b.b); });
 
-        // ---- Background: tinted from the analogic hue family ----
         var bgH = analogic[0].h;
-        var bgRgb = hslToRgb(bgH, 10, 89);
+        var bgRgb = isDark ? hslToRgb(bgH, 12, 11) : hslToRgb(bgH, 10, 89);
         var bgHex = toHex(bgRgb[0], bgRgb[1], bgRgb[2]);
         var bgLum = luminance(bgRgb[0], bgRgb[1], bgRgb[2]);
         BG_COLOR = bgHex;
 
-        // ---- Primary: ONE analogic colour for ALL text + dots ----
-        // Eyebrow and tagline use the same hue at reduced opacity — no
-        // hue mixing, no jarring green-next-to-blue.
-        var pri = enforceContrast(bgLum, analogic[0].h, analogic[0].s, analogic[0].l, 4.5);
+        var pri = isDark
+          ? enforceContrastLight(bgLum, analogic[0].h, analogic[0].s, 72, 4.5)
+          : enforceContrast(bgLum, analogic[0].h, analogic[0].s, analogic[0].l, 4.5);
         var pr = pri.rgb[0], pg = pri.rgb[1], pb = pri.rgb[2];
 
-        // ---- Complement as accent (replaces --c-gold site-wide) ----
         var accentSrc = complement[0] || analogic[0];
-        var accent = enforceContrast(bgLum, accentSrc.h, accentSrc.s, accentSrc.l, 3.0);
-        var accentMidRgb = hslToRgb(accentSrc.h, Math.max(15, accentSrc.s - 20), 85);
+        var accent = isDark
+          ? enforceContrastLight(bgLum, accentSrc.h, accentSrc.s, 68, 3.0)
+          : enforceContrast(bgLum, accentSrc.h, accentSrc.s, accentSrc.l, 3.0);
+        var accentMidRgb = isDark
+          ? hslToRgb(accentSrc.h, Math.max(10, accentSrc.s - 30), 18)
+          : hslToRgb(accentSrc.h, Math.max(15, accentSrc.s - 20), 85);
         var accentMidHex = toHex(accentMidRgb[0], accentMidRgb[1], accentMidRgb[2]);
 
-        // ---- Apply everything ----
         DOT_COLOR = pri.hex;
         var root = document.documentElement.style;
         var ar = accent.rgb[0], ag = accent.rgb[1], ab = accent.rgb[2];
 
-        // Core palette vars (override the :root defaults)
         root.setProperty('--c-dark', pri.hex);
         root.setProperty('--c-dark-rgb', pr + ',' + pg + ',' + pb);
         root.setProperty('--c-text', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.82)');
         root.setProperty('--c-text-muted', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.52)');
         root.setProperty('--c-bg', bgHex);
 
-        // Hero text: single hue, opacity-based hierarchy
         root.setProperty('--c-accent', pri.hex);
         root.setProperty('--c-accent-muted', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.62)');
         root.setProperty('--c-accent-faint', 'rgba(' + pr + ',' + pg + ',' + pb + ',0.40)');
 
-        // Hero background + gradient overlays
         root.setProperty('--c-hero-bg', bgHex);
         root.setProperty('--c-hero-bg-88', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.88)');
         root.setProperty('--c-hero-bg-50', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.50)');
         root.setProperty('--c-hero-bg-70', 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',0.70)');
 
-        // Accent / gold (site-wide: links, buttons, kickers, CTA, cards)
         root.setProperty('--c-gold', accent.hex);
         root.setProperty('--c-gold-rgb', ar + ',' + ag + ',' + ab);
         root.setProperty('--c-gold-mid', accentMidHex);
@@ -675,9 +802,22 @@
         if (analogic[0].name) root.setProperty('--c-accent-name', '"' + analogic[0].name + '"');
       }
 
+      function setMode(isDark) {
+        currentMode = isDark ? 'dark' : 'light';
+        try { localStorage.setItem('color-mode', currentMode); } catch(e) {}
+        document.documentElement.setAttribute('data-theme', currentMode);
+        if (sessionColors) {
+          applyScheme(sessionColors, isDark);
+          if (imgLoaded && colorLoaded && dots.length) render();
+        }
+        var btn = document.getElementById('theme-toggle');
+        if (btn) {
+          btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          btn.setAttribute('aria-pressed', String(isDark));
+        }
+      }
+
       // ---- Fetch the scheme from The Color API ----
-      // analogic-complement gives ~4 analogic neighbours + ~2 complement
-      // colours — a full harmonious palette in one call.
       var seedHue = Math.floor(Math.random() * 360);
       fetch('https://www.thecolorapi.com/scheme?hsl=' + seedHue + ',55,32&mode=analogic-complement&count=6&format=json')
         .then(function (res) { return res.json(); })
@@ -690,7 +830,8 @@
               name: c.name.value
             };
           });
-          applyScheme(colors);
+          sessionColors = colors;
+          applyScheme(colors, currentIsDark());
           document.body.style.opacity = '1';
           colorLoaded = true;
           awaitTrigger();
@@ -700,6 +841,30 @@
           colorLoaded = true;
           awaitTrigger();
         });
+
+      // Respond to OS preference changes when no manual override is set
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          if (!storedMode()) setMode(e.matches);
+        });
+      }
+
+      // Toggle click
+      document.getElementById('theme-toggle').addEventListener('click', function() {
+        setMode(currentMode !== 'dark');
+      });
+
+      // Set initial mode state from preference
+      (function() {
+        var isDark = currentIsDark();
+        currentMode = isDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', currentMode);
+        var btn = document.getElementById('theme-toggle');
+        if (btn) {
+          btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          btn.setAttribute('aria-pressed', String(isDark));
+        }
+      })();
 
       img.onload = function () {
         imgLoaded = true;
