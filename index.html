@@ -883,7 +883,8 @@
       }
 
       // Toggle click
-      document.getElementById('theme-toggle').addEventListener('click', function() {
+      var toggleBtn = document.getElementById('theme-toggle');
+      if (toggleBtn) toggleBtn.addEventListener('click', function() {
         setMode(currentMode !== 'dark');
       });
 
