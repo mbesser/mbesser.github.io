@@ -4,52 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for Matti Besser (mattibesser.com) built with Jekyll static site generator, hosted on GitHub Pages.
+Personal portfolio website for Matti Besser (mattibesser.com). Plain static HTML/CSS/JS — no build step required. Hosted on GitHub Pages with `.nojekyll`.
 
-## Build Commands
+## Deployment
 
-Requires Homebrew Ruby (not system Ruby). Set PATH before running:
-```bash
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-```
-
-Then run:
-```bash
-bundle install                         # Install Ruby dependencies (uses vendor/bundle)
-bundle exec jekyll serve               # Start dev server at localhost:4000
-bundle exec jekyll serve --livereload  # Dev server with auto-reload
-bundle exec jekyll build               # Build static site to _site/
-bundle exec jekyll clean               # Clean generated files
-```
+Push to `master` branch. GitHub Pages serves files directly (no Jekyll processing).
 
 ## Architecture
 
-**Stack**: Jekyll 3.10 / Ruby 3.4 / SCSS / Liquid templates / GitHub Pages
+**Stack**: Vanilla HTML / inline CSS / vanilla JS
 
-**Layout Hierarchy**:
-- `_layouts/default.html` → base layout for all pages
-- `_layouts/homepage.html` → homepage (extends default)
-- `_layouts/case_study.html` → portfolio items (extends default)
-- `_layouts/post.html` → blog posts (extends default)
+**Key files**:
+- `index.html` — entire site: hero with canvas halftone portrait, about, contact, footer. All CSS and JS are inline.
+- `legal/index.html` — legal/imprint page (plain HTML)
+- `assets/sass/` — legacy SCSS (no longer compiled; kept for reference)
+- `img/` — images including `portrait-halftone.png` (source for canvas halftone)
+- `favicon.svg` — SVG favicon with light/dark mode support
+- `CNAME` — custom domain (mattibesser.com)
 
-**Content Collections**:
-- `_case_studies/` → Portfolio case studies (Markdown with YAML front matter)
-- `_posts/` → Blog posts
-- `_data/` → Shared data (clients.yml, testimonials.yml)
+**Notable JS in index.html**:
+- Canvas halftone portrait — samples `img/portrait-halftone.png` on an off-screen canvas, renders as animated dot grid. Uses `Math.round()` for W/H and `imageData.width` as row stride (Firefox float-precision fix).
+- Random colour scheme — fetches an analogic palette from thecolorapi.com on each load
+- Typewriter verb animation
+- Scroll reveal
 
-**Styling**:
-- `assets/sass/globals/_variables.scss` → Colors, spacing, breakpoints
-- `assets/sass/globals/_mixins.scss` → Responsive breakpoint mixins
-- SCSS is compiled inline via `_includes/htmlhead.html`
-- Responsive: mobile-first with `@include respond-to(small/medium/large)`
-
-**Key Includes** (`_includes/`):
-- `site_header.html`, `site_footer.html` → Site chrome
-- `home.html`, `work.html`, `services.html`, `contact.html` → Homepage sections
-- `case_studies/` → Case study components (key_facts, roles, testimonials)
-
-## Content Workflow
-
-**Add a case study**: Create `_case_studies/NN_slug.md` with front matter including `project_name`, `title`, `published: true`, add images to `img/{project}/`
-
-**Deployment**: Push to `master` branch triggers automatic GitHub Pages build
+**Deployment**: Push to `master` triggers GitHub Pages build
