@@ -930,14 +930,24 @@
 
       function sampleAndBuild() {
         var rect = canvas.parentElement.getBoundingClientRect();
-        W = rect.width  || window.innerWidth;
-        H = rect.height || window.innerHeight;
+        // Round to integers — Firefox reports fractional getBoundingClientRect values.
+        // Using a float as both canvas.width (which floors) and as row stride in the
+        // pixel index formula causes a progressive x-offset per row (parallelogram shear).
+        W = Math.round(rect.width  || window.innerWidth);
+        H = Math.round(rect.height || window.innerHeight);
         if (!W || !H) return false;
         canvas.width = W; canvas.height = H;
 
-        // Portrait starts at col 3 left edge (cols 3–6), overlapping the text in col 3
-        var col3Anchor = canvas.parentElement.querySelector('.hero__col3-anchor');
-        var portraitLeft = col3Anchor ? col3Anchor.getBoundingClientRect().left : W * 0.3;
+        // Portrait left boundary: read actual computed column widths from the browser.
+        var heroStyle = window.getComputedStyle(canvas.parentElement);
+        var colStr    = heroStyle.gridTemplateColumns || '';
+        var gapPx     = parseFloat(heroStyle.columnGap || heroStyle.gridColumnGap) || 0;
+        var cols      = (colStr && colStr !== 'none')
+          ? colStr.trim().split(/\s+/).map(parseFloat).filter(function(n) { return n > 0; })
+          : [];
+        var portraitLeft = cols.length >= 2
+          ? cols[0] + gapPx + cols[1] + gapPx   // left edge of grid col 3
+          : W * 0.35;
 
         var portraitScale = W < 600 ? 0.62 : W < 1024 ? 0.70 : 0.80;
         var imgAspect = img.width / img.height;
@@ -957,8 +967,10 @@
         offCtx.fillStyle = '#ffffff';
         offCtx.fillRect(0, 0, W, H);
         offCtx.drawImage(img, drawX, drawY, drawW, drawH);
-        var imgData;
-        try { imgData = offCtx.getImageData(0, 0, W, H).data; } catch(e) { return false; }
+        var imageData;
+        try { imageData = offCtx.getImageData(0, 0, W, H); } catch(e) { return false; }
+        var imgData  = imageData.data;
+        var dataW    = imageData.width; // use actual data stride, never a float
 
         dots = [];
         var halfSpacing = dotSpacing / 2;
@@ -966,7 +978,7 @@
           for (var x = halfSpacing; x < W; x += dotSpacing) {
             var sx = Math.min(Math.round(x), W - 1);
             var sy = Math.min(Math.round(y), H - 1);
-            var idx = (sy * W + sx) * 4;
+            var idx = (sy * dataW + sx) * 4;
             var r = imgData[idx], g = imgData[idx+1], b = imgData[idx+2];
             var brightness = (0.299*r + 0.587*g + 0.114*b) / 255;
             if (brightness > BRIGHT_CUT) continue;
